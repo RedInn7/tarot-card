@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "title": "Intro to JS",
+    "content": "JS is the soul of web pages."
+  },
+  {
+    "id": 2,
+    "title": "Variables",
+    "content": "let, const, var are keywords for variables."
+  },
+  {
+    "id": 3,
+    "title": "Intro to web",
+    "content": "web is the soul of web development"
+  }
+]
