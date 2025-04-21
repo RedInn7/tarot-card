@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "question": "JS uses which keyword to define constants?",
+    "options": [
+      "var",
+      "let",
+      "const"
+    ],
+    "answer": "const"
+  },
+  {
+    "id": 2,
+    "question": "Which keyword is used for loops?",
+    "options": [
+      "if",
+      "for",
+      "const"
+    ],
+    "answer": "for"
+  },
+  {
+    "id": 3,
+    "question": "Which keyword is used to define a constant in JS?",
+    "options": [
+      "var",
+      "let",
+      "const"
+    ],
+    "answer": "const"
+  }
+]
