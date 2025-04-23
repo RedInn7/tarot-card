@@ -1,2 +1,2 @@
-backend/node_modules
+src/node_modules
 *.DS_Store
