@@ -40,18 +40,66 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.get('/learn/:id',(req, res) => res.sendFile(path.join(__dirname, 'public', 'learn.html')));
-app.get('/quiz/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'quiz.html')));
-app.get('/result',   (req, res) => res.sendFile(path.join(__dirname, 'public', 'result.html')));
+app.get('/learn/:id',(req, res) => {
+  const id = parseInt(req.params.id);
+  if (id == 1) res.sendFile(path.join(__dirname, 'public', 'learn_intro.html'))
+  else if (id === 2) res.sendFile(path.join(__dirname, 'public', 'learn_story.html'))
+});
+
+app.get('/quiz', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'quiz_card.html'));
+});
+
+app.get('/quiz_result', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'quiz_result.html'));
+});
+
 app.get('/about', (req, res) =>
   res.sendFile(path.join(__dirname, 'public', 'about.html')));
 
-app.get('/learn/:id', (req, res) => {
-  const id = parseInt(req.params.id);
-  const lessons = JSON.parse(fs.readFileSync('./data/lessons.json'));
-  const lesson = lessons.find(l => l.id === id);
-  if (lesson) res.json(lesson);
-  else res.status(404).send('Lesson not found');
+// GET /api/getRandomCard
+app.get('/api/getRandomCard', (req, res) => {
+  const dataPath = path.join(__dirname, 'data', 'cards.json');
+  let cards = [];
+  try {
+    cards = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
+  } catch (err) {
+    console.error('Failed to load card_info.json:', err);
+    return res.status(500).json({ error: 'Cannot load card data' });
+  }
+
+  const randomIndex = Math.floor(Math.random() * cards.length);
+  const card = cards[randomIndex];
+
+  res.json(card);
+});
+
+// GET /api/getCard
+app.get('/api/getCard/:id', (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  const dataPath = path.join(__dirname, 'data', 'cards.json');
+  let cards;
+
+  try {
+    cards = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
+  } catch (err) {
+    console.error('Failed to load card_info.json:', err);
+    return res.status(500).json({ error: 'Cannot load card data' });
+  }
+
+  const card = cards.find(c => c.id === id);
+  if (!card) {
+    return res.status(404).json({ error: 'Card not found' });
+  }
+
+  res.json(card);
+});
+
+// GET /api/quiz
+app.get('/api/quiz', (req, res) => {
+  const quiz = readJsonFile(path.join(__dirname, 'data', 'quiz.json'));
+  if (!quiz) return res.status(500).json({ error: 'Cannot load quiz data' });
+  res.json(quiz);
 });
 
 app.get('/quiz/:id', (req, res) => {
