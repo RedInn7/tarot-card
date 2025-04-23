@@ -1,32 +1,39 @@
 [
   {
-    "id": 1,
-    "question": "JS uses which keyword to define constants?",
-    "options": [
-      "var",
-      "let",
-      "const"
-    ],
-    "answer": "const"
-  },
-  {
-    "id": 2,
-    "question": "Which keyword is used for loops?",
-    "options": [
-      "if",
-      "for",
-      "const"
-    ],
-    "answer": "for"
-  },
-  {
-    "id": 3,
-    "question": "Which keyword is used to define a constant in JS?",
-    "options": [
-      "var",
-      "let",
-      "const"
-    ],
-    "answer": "const"
+    "section1": [
+      {
+        "id": 1,
+        "correctCardId": 3,
+        "question": "Which is the appropriate description for the card shown below?",
+        "options": [
+          "Represents abundance, the Earth mother, and nurturing.",
+          "Symbolizes intuition, mystery, and inner wisdom.",
+          "Represents balance, justice, and cause and effect."
+        ],
+        "answer": 0
+      },
+      {
+        "id": 2,
+        "correctCardId": 17,
+        "question": "Which is the appropriate description for the card shown below?",
+        "options": [
+          "Symbolizes awakening, judgment, and rebirth.",
+          "Represents joy, success, and vitality.",
+          "Represents hope, inspiration, and guidance."
+        ],
+        "answer": 2
+      },
+      {
+        "id": 3,
+        "correctCardId": 10,
+        "question": "Which is the meaning in love for the card shown below?",
+        "options": [
+          "A major shift in your love life is imminent, offering unexpected opportunities; be ready for fate’s turn, embrace change with optimism, and recognize that new cycles will bring fresh romantic possibilities.",
+          "Inner courage and gentle compassion are essential; practice patience, tenderly support your partner, and use your emotional resilience to calm tensions and deepen your connection.",
+          "Emotional illusions or subconscious fears could cloud your feelings; take time to reflect on hidden doubts, communicate openly about uncertainties, and trust your intuition to navigate love’s mysteries."
+        ],
+        "answer": 0
+      }
+    ]
   }
 ]
