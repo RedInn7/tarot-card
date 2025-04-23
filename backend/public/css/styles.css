@@ -1,0 +1,4 @@
+body { background: #faf9f7; }
+img       { border-radius: 12px; }
+.list-group-item:hover { background:#f0f0ff; cursor:pointer; }
+

@@ -40,6 +40,12 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+app.get('/learn/:id',(req, res) => res.sendFile(path.join(__dirname, 'public', 'learn.html')));
+app.get('/quiz/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'quiz.html')));
+app.get('/result',   (req, res) => res.sendFile(path.join(__dirname, 'public', 'result.html')));
+app.get('/about', (req, res) =>
+  res.sendFile(path.join(__dirname, 'public', 'about.html')));
+
 app.get('/learn/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const lessons = JSON.parse(fs.readFileSync('./data/lessons.json'));
