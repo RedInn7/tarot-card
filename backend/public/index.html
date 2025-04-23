@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tarot Tutor</title>
+  <meta name="viewport" content="width=device-width, initial‑scale=1">
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+  <link href="/css/styles.css" rel="stylesheet">
+  <style>
+
+    .deck-gallery {
+      overflow-x: auto;
+      white-space: nowrap;
+      padding-bottom: 1rem;
+    }
+    .deck-item {
+      display: inline-block;
+      width: 150px;
+      margin-right: 1rem;
+      text-align: center;
+    }
+    .timeline-buttons .btn {
+      min-width: 80px;
+      margin-right: .5rem;
+    }
+  </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+  <nav class="navbar navbar-light bg-light px-3">
+    <a class="navbar-brand" href="/">Tarot Tutor</a>
+  </nav>
+
+  <main class="container my-4">
+
+    <!-- ===== 1) Home Screen / Welcome ===== -->
+    <section id="welcome" class="text-center mb-5">
+      <h1 class="mb-3">Welcome to Tarot Tutor</h1>
+      <p class="lead mb-4">
+        A brief introduction to the history and symbolism of Tarot cards.
+      </p>
+      <button id="startBtn" class="btn btn-primary me-2">Start Lesson</button>
+      <a href="/about" class="btn btn-outline-secondary">About Tarot</a>
+    </section>
+
+    <!-- ===== 2) Introduction to Tarot ===== -->
+    <section id="introduction">
+      <h2 class="mb-1">500 Years of Tarot</h2>
+      <p class="text-muted mb-4">Tarot Decks 1400–1900</p>
+
+
+      <div class="deck-gallery mb-4">
+        <div class="deck-item">
+          <img src="/img/visconti.jpg" class="img-fluid rounded mb-2" alt="Visconti Deck">
+          <div>Visconti<br><small>(c. 1410–1430)</small></div>
+        </div>
+        <div class="deck-item">
+          <img src="/img/sola-busca.jpg" class="img-fluid rounded mb-2" alt="Sola Busca Deck">
+          <div>Sola Busca<br><small>(c. 1491)</small></div>
+        </div>
+        <div class="deck-item">
+          <img src="/img/marseilles.jpg" class="img-fluid rounded mb-2" alt="Marseilles Deck">
+          <div>Marseilles<br><small>(c. 1630–1750)</small></div>
+        </div>
+        <div class="deck-item">
+          <img src="/img/grand-etteilla.jpg" class="img-fluid rounded mb-2" alt="Grand Etteilla">
+          <div>Grand Etteilla<br><small>(c. 1789)</small></div>
+        </div>
+        <div class="deck-item">
+          <img src="/img/ijj.jpg" class="img-fluid rounded mb-2" alt="IJJ Swiss Deck">
+          <div>IJJ Swiss<br><small>(c. 1800)</small></div>
+        </div>
+        <div class="deck-item">
+          <img src="/img/waite-smith.jpg" class="img-fluid rounded mb-2" alt="Waite‑Smith Deck">
+          <div>Waite‑Smith<br><small>(1904–1810)</small></div>
+        </div>
+      </div>
+
+      <!-- 时间段按钮，点击可跳转或弹窗显示细节 -->
+      <div class="timeline-buttons mb-4">
+        <button class="btn btn-success" data-period="1400-99">1400–99</button>
+        <button class="btn btn-success" data-period="1500-99">1500–99</button>
+        <button class="btn btn-success" data-period="1600-99">1600–99</button>
+        <button class="btn btn-success" data-period="1700-99">1700–99</button>
+        <button class="btn btn-success" data-period="1800-99">1800–99</button>
+        <button class="btn btn-success" data-period="1900-99">1900–99</button>
+      </div>
+
+      <p class="small text-muted">
+        • Use the scroll bar to explore different decks.<br>
+        • Click on each time‑period button to see specific info.<br>
+        • Audio narration available where provided.
+      </p>
+
+      <div class="d-flex justify-content-between">
+        <a href="/" class="btn btn-outline-secondary">Back</a>
+        <button id="nextSection" class="btn btn-success">Next</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

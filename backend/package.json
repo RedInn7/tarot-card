@@ -1,0 +1,16 @@
+{
+  "name": "your-app",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.2"
+  },
+  "description": "A simple Express.js backend server for managing lessons and quizzes with comprehensive user activity tracking.",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tarot Card Drag and Drop</title>
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-light bg-light px-3">
+    <a class="navbar-brand" href="/">Tarot Tutor</a>
+  </nav>
+
+  <!-- Button controls -->
+  <div class="button-container">
+    <button id="get-card-btn" class="btn btn-primary">Card Source</button>
+    <button id="clear-btn" class="btn btn-danger">Clear</button>
+  </div>
+
+  <!-- Container for draggable card -->
+  <div id="source-container" class="text-center mb-4"></div>
+
+  <main>
+    <!-- Question dropdown centered above card areas -->
+    <div class="question-container">
+      <select id="question-select" class="form-select w-75 mx-auto">
+        <option value="q1">
+          What’s holding me back from finding the right partner, and how can I move forward?
+        </option>
+        <option value="q2">
+          Is now a good time to change jobs or should I stay and wait for a promotion?
+        </option>
+      </select>
+    </div>
+
+    <div id="drop-container">
+      <div class="zone-container" data-zone="1">
+        <h2>PAST</h2>
+        <div class="drop-zone"></div>
+        <div class="card-info"></div>
+      </div>
+      <div class="zone-container" data-zone="2">
+        <h2>PRESENT</h2>
+        <div class="drop-zone"></div>
+        <div class="card-info"></div>
+      </div>
+      <div class="zone-container" data-zone="3">
+        <h2>FUTURE</h2>
+        <div class="drop-zone"></div>
+        <div class="card-info"></div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="d-flex justify-content-between my-4">
+      <a href="/learn/1" class="btn btn-outline-secondary">Back</a>
+      <a href="/quiz" class="btn btn-success">Next: Take the Quiz</a>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const BACK_IMAGE = '/img/card-back.jpg';
+    const getCardBtn = document.getElementById('get-card-btn');
+    const sourceContainer = document.getElementById('source-container');
+    const dropZones = document.querySelectorAll('.drop-zone');
+    const clearBtn = document.getElementById('clear-btn');
+    let currentCard = null;
+
+    getCardBtn.addEventListener('click', async () => {
+      if (currentCard) sourceContainer.removeChild(currentCard);
+      try {
+        const res = await fetch('/api/getRandomCard');
+        const card = await res.json();
+        const img = document.createElement('img');
+        img.src = BACK_IMAGE;
+        img.className = 'card-back';
+        img.draggable = true;
+        img.dataset.card = JSON.stringify(card);
+        img.addEventListener('dragstart', e =>
+          e.dataTransfer.setData('application/json', e.target.dataset.card)
+        );
+        sourceContainer.appendChild(img);
+        currentCard = img;
+      } catch (err) {
+        console.error(err);
+        alert('Failed to fetch card');
+      }
+    });
+
+    dropZones.forEach(zone => {
+      zone.addEventListener('dragover', e => {
+        e.preventDefault();
+        zone.classList.add('hover');
+      });
+      zone.addEventListener('dragleave', () => zone.classList.remove('hover'));
+      zone.addEventListener('drop', e => {
+        e.preventDefault();
+        zone.classList.remove('hover');
+        const data = e.dataTransfer.getData('application/json');
+        if (!data) return;
+        const card = JSON.parse(data);
+        zone.innerHTML = '';
+        const img = document.createElement('img');
+        img.src = BACK_IMAGE;
+        img.className = 'card-back';
+        img.dataset.card = JSON.stringify(card);
+        zone.appendChild(img);
+
+        const container = zone.closest('.zone-container');
+        const infoDiv = container.querySelector('.card-info');
+        infoDiv.innerHTML = '';
+
+        img.addEventListener('click', () => {
+          // show front image in zone
+          zone.innerHTML = '';
+          const frontImg = document.createElement('img');
+          frontImg.src = card.image;
+          frontImg.className = 'card-front';
+          zone.appendChild(frontImg);
+          // display text outside in three lines
+          infoDiv.innerHTML =
+            `<h3>${card.name}</h3>` +
+            `<p>${card.description}</p>` +
+            `<p class="love-meaning">${card.loveMeaning}</p>`;
+        });
+
+        if (currentCard) {
+          sourceContainer.removeChild(currentCard);
+          currentCard = null;
+        }
+      });
+    });
+
+    clearBtn.addEventListener('click', () => {
+      dropZones.forEach(zone => (zone.innerHTML = ''));
+      document
+        .querySelectorAll('.card-info')
+        .forEach(div => (div.innerHTML = ''));
+      if (currentCard) {
+        sourceContainer.removeChild(currentCard);
+        currentCard = null;
+      }
+    });
+  </script>
+</body>
+</html>
