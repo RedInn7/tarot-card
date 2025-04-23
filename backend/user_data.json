@@ -1,0 +1,47 @@
+{
+  "users": {
+    "8b3abb3a-0db4-432d-81c5-c76c792f7bd7": {
+      "userId": "8b3abb3a-0db4-432d-81c5-c76c792f7bd7",
+      "activities": [
+        {
+          "timestamp": "2025-04-23T21:51:26.618Z",
+          "type": "page_enter",
+          "page": "home",
+          "details": {
+            "pageName": "home"
+          }
+        },
+        {
+          "timestamp": "2025-04-23T21:51:26.702Z",
+          "type": "lesson_view",
+          "page": "learn",
+          "details": {
+            "lessonId": 2,
+            "timeSpent": 0
+          }
+        }
+      ]
+    }
+  },
+  "activities": [
+    {
+      "userId": "8b3abb3a-0db4-432d-81c5-c76c792f7bd7",
+      "timestamp": "2025-04-23T21:51:26.618Z",
+      "type": "page_enter",
+      "page": "home",
+      "details": {
+        "pageName": "home"
+      }
+    },
+    {
+      "userId": "8b3abb3a-0db4-432d-81c5-c76c792f7bd7",
+      "timestamp": "2025-04-23T21:51:26.702Z",
+      "type": "lesson_view",
+      "page": "learn",
+      "details": {
+        "lessonId": 2,
+        "timeSpent": 0
+      }
+    }
+  ]
+}

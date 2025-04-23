@@ -1,271 +1,244 @@
-const express = require('express');
+const express    = require('express');
 const bodyParser = require('body-parser');
-const fs = require('fs');
-const path = require('path');
+const fs         = require('fs');
+const path       = require('path');
 
-const app = express();
+const app  = express();
 const PORT = 3000;
 
+// 中间件
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-// Helper function to read JSON file
-const readJsonFile = (filePath) => {
+// 用户日志文件路径
+const USER_LOG = path.join(__dirname, 'user_data.json');
+
+//
+// —— 安全的 JSON 读写 ——
+//
+function readJsonFileSafe(filePath) {
+  if (!fs.existsSync(filePath)) {
+    return { users: {}, activities: [] };
+  }
   try {
-    return JSON.parse(fs.readFileSync(filePath));
-  } catch (error) {
-    return [];
+    const txt = fs.readFileSync(filePath, 'utf8');
+    const obj = JSON.parse(txt);
+    // 保底字段
+    obj.users      = obj.users      || {};
+    obj.activities = obj.activities || [];
+    return obj;
+  } catch (err) {
+    console.error(`Error parsing JSON from ${filePath}:`, err);
+    return { users: {}, activities: [] };
   }
-};
+}
 
-// Helper function to write JSON file
-const writeJsonFile = (filePath, data) => {
+function writeJsonFile(filePath, data) {
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-};
+}
 
-// Initialize user_data.json if it doesn't exist
-const initializeUserData = () => {
-  const userDataPath = './user_data.json';
-  if (!fs.existsSync(userDataPath)) {
-    writeJsonFile(userDataPath, {
-      users: {},
-      activities: []
-    });
-  }
-};
+// 初始化 user_data.json
+if (!fs.existsSync(USER_LOG)) {
+  writeJsonFile(USER_LOG, { users: {}, activities: [] });
+}
 
-initializeUserData();
-
+//
+// —— HTML 页面路由 ——
+//
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.get('/learn/:id',(req, res) => {
-  const id = parseInt(req.params.id);
-  if (id == 1) res.sendFile(path.join(__dirname, 'public', 'learn_intro.html'))
-  else if (id === 2) res.sendFile(path.join(__dirname, 'public', 'learn_story.html'))
+// 学习页：1 = intro, 2 = drag-drop
+app.get('/learn/:id', (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  if (id === 1) res.sendFile(path.join(__dirname, 'public', 'learn_intro.html'));
+  else if (id === 2) res.sendFile(path.join(__dirname, 'public', 'learn_story.html'));
+  else res.redirect('/');
 });
 
-app.get('/quiz', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'quiz_card.html'));
+app.get('/about', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'about.html'));
 });
 
+// Quiz 页面（单页应用，同一个 HTML）
+app.get('/quiz',     (req, res) => res.sendFile(path.join(__dirname, 'public', 'quiz_card.html')));
+app.get('/quiz/:id', (req, res) => res.sendFile(path.join(__dirname, 'public', 'quiz_card.html')));
+
+// Quiz 结果页
 app.get('/quiz_result', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'quiz_result.html'));
 });
 
-app.get('/about', (req, res) =>
-  res.sendFile(path.join(__dirname, 'public', 'about.html')));
-
-// GET /api/getRandomCard
-app.get('/api/getRandomCard', (req, res) => {
-  const dataPath = path.join(__dirname, 'data', 'cards.json');
-  let cards = [];
-  try {
-    cards = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
-  } catch (err) {
-    console.error('Failed to load card_info.json:', err);
-    return res.status(500).json({ error: 'Cannot load card data' });
-  }
-
-  const randomIndex = Math.floor(Math.random() * cards.length);
-  const card = cards[randomIndex];
-
-  res.json(card);
-});
-
-// GET /api/getCard
-app.get('/api/getCard/:id', (req, res) => {
-  const id = parseInt(req.params.id, 10);
-  const dataPath = path.join(__dirname, 'data', 'cards.json');
-  let cards;
-
-  try {
-    cards = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
-  } catch (err) {
-    console.error('Failed to load card_info.json:', err);
-    return res.status(500).json({ error: 'Cannot load card data' });
-  }
-
-  const card = cards.find(c => c.id === id);
-  if (!card) {
-    return res.status(404).json({ error: 'Card not found' });
-  }
-
-  res.json(card);
-});
-
-// GET /api/quiz
-app.get('/api/quiz', (req, res) => {
-  const quiz = readJsonFile(path.join(__dirname, 'data', 'quiz.json'));
-  if (!quiz) return res.status(500).json({ error: 'Cannot load quiz data' });
-  res.json(quiz);
-});
-
-app.get('/quiz/:id', (req, res) => {
-  const id = parseInt(req.params.id);
-  const quiz = JSON.parse(fs.readFileSync('./data/quiz.json'));
-  const question = quiz.find(q => q.id === id);
-  if (question) res.json(question);
-  else res.status(404).send('Question not found');
-});
-
-app.post('/log', (req, res) => {
-  const userAction = req.body;
-  const timestamp = new Date().toISOString();
-  
-  // Read existing user data
-  const userData = readJsonFile('./user_data.json');
-  
-  // Ensure user exists in the data structure
-  if (!userData.users[userAction.userId]) {
-    userData.users[userAction.userId] = {
-      userId: userAction.userId,
-      activities: []
-    };
-  }
-  
-  // Create activity record
-  const activity = {
-    timestamp,
-    type: userAction.type,
-    page: userAction.page,
-    details: {}
-  };
-  
-  // Store specific details based on activity type
-  switch (userAction.type) {
-    case 'quiz_answer':
-      activity.details = {
-        questionId: userAction.questionId,
-        selectedAnswer: userAction.selectedAnswer,
-        isCorrect: userAction.isCorrect
-      };
-      break;
-    case 'lesson_view':
-      activity.details = {
-        lessonId: userAction.lessonId,
-        timeSpent: userAction.timeSpent || 0
-      };
-      break;
-    case 'page_enter':
-      activity.details = {
-        pageName: userAction.pageName
-      };
-      break;
-  }
-  
-  // Add activity to user's history
-  userData.users[userAction.userId].activities.push(activity);
-  
-  // Add to global activities list
-  userData.activities.push({
-    userId: userAction.userId,
-    ...activity
-  });
-  
-  // Save updated data
-  writeJsonFile('./user_data.json', userData);
-  
-  res.json({ status: 'logged', activity });
-});
-
+// 最终结果页
 app.get('/result', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'result.html'));
 });
 
-// Get all lessons
-app.get('/lessons', (req, res) => {
-  const lessons = readJsonFile('./data/lessons.json');
-  res.json(lessons);
-});
+//
+// —— 静态数据 API 路由 ——
+//
 
-// Get a specific lesson
-app.get('/lessons/:id', (req, res) => {
-  const id = parseInt(req.params.id);
-  const lessons = readJsonFile('./data/lessons.json');
-  const lesson = lessons.find(l => l.id === id);
-  if (lesson) res.json(lesson);
-  else res.status(404).send('Lesson not found');
-});
+// Utility: 读 data 下的 JSON
+function readDataJson(name) {
+  const p = path.join(__dirname, 'data', name);
+  return JSON.parse(fs.readFileSync(p, 'utf8'));
+}
 
-// Create or update a lesson
-app.post('/lessons', (req, res) => {
-  const newLesson = req.body;
-  const lessons = readJsonFile('./data/lessons.json');
-  
-  if (newLesson.id) {
-    // Update existing lesson
-    const index = lessons.findIndex(l => l.id === newLesson.id);
-    if (index !== -1) {
-      lessons[index] = newLesson;
-    } else {
-      lessons.push(newLesson);
-    }
-  } else {
-    // Create new lesson
-    newLesson.id = lessons.length > 0 ? Math.max(...lessons.map(l => l.id)) + 1 : 1;
-    lessons.push(newLesson);
+// 随机一张牌
+app.get('/api/getRandomCard', (req, res) => {
+  let cards;
+  try {
+    cards = readDataJson('cards.json');
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: 'Cannot load card data' });
   }
-  
-  writeJsonFile('./data/lessons.json', lessons);
-  res.json(newLesson);
+  const card = cards[Math.floor(Math.random() * cards.length)];
+  res.json(card);
 });
 
-// Get all quiz questions
-app.get('/quiz', (req, res) => {
-  const quiz = readJsonFile('./data/quiz.json');
+// 指定 ID 的牌
+app.get('/api/getCard/:id', (req, res) => {
+  let cards;
+  try {
+    cards = readDataJson('cards.json');
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: 'Cannot load card data' });
+  }
+  const id = parseInt(req.params.id, 10);
+  const card = cards.find(c => c.id === id);
+  if (!card) return res.status(404).json({ error: 'Card not found' });
+  res.json(card);
+});
+
+// 全部 quiz 题目
+app.get('/api/quiz', (req, res) => {
+  let quiz;
+  try {
+    quiz = readDataJson('quiz.json');
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: 'Cannot load quiz data' });
+  }
   res.json(quiz);
 });
 
-// Get a specific quiz question
-app.get('/quiz/:id', (req, res) => {
-  const id = parseInt(req.params.id);
-  const quiz = readJsonFile('./data/quiz.json');
-  const question = quiz.find(q => q.id === id);
-  if (question) res.json(question);
-  else res.status(404).send('Question not found');
-});
-
-// Create or update a quiz question
-app.post('/quiz', (req, res) => {
-  const newQuestion = req.body;
-  const quiz = readJsonFile('./data/quiz.json');
-  
-  if (newQuestion.id) {
-    // Update existing question
-    const index = quiz.findIndex(q => q.id === newQuestion.id);
-    if (index !== -1) {
-      quiz[index] = newQuestion;
-    } else {
-      quiz.push(newQuestion);
-    }
-  } else {
-    // Create new question
-    newQuestion.id = quiz.length > 0 ? Math.max(...quiz.map(q => q.id)) + 1 : 1;
-    quiz.push(newQuestion);
+// 单题查询
+app.get('/api/quiz/:id', (req, res) => {
+  let quiz;
+  try {
+    quiz = readDataJson('quiz.json');
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: 'Cannot load quiz data' });
   }
-  
-  writeJsonFile('./data/quiz.json', quiz);
-  res.json(newQuestion);
+  const id = parseInt(req.params.id, 10);
+  const question = quiz.find(q => q.id === id);
+  if (!question) return res.status(404).json({ error: 'Question not found' });
+  res.json(question);
 });
 
-// Get user activity history
+//
+// —— 日志系统 ——
+//
+app.post('/log', (req, res) => {
+  const entry     = req.body;
+  const timestamp = new Date().toISOString();
+
+  // 读现有日志
+  const data = readJsonFileSafe(USER_LOG);
+
+  // 确保 user 对象存在
+  if (!data.users[entry.userId]) {
+    data.users[entry.userId] = { userId: entry.userId, activities: [] };
+  }
+
+  // 构建 activity
+  const activity = {
+    timestamp,
+    type: entry.type,
+    page: entry.page || null,
+    details: {}
+  };
+
+  switch (entry.type) {
+    case 'page_enter':
+      activity.details = {
+        pageName: entry.page || entry.pageName || 'unknown'
+      };
+      break;
+    case 'lesson_view':
+      activity.details = {
+        lessonId: entry.lessonId,
+        timeSpent: entry.timeSpent || 0
+      };
+      break;
+    case 'quiz_answer':
+      activity.details = {
+        questionId: entry.questionId,
+        selectedAnswer: entry.selectedAnswer,
+        isCorrect: entry.isCorrect
+      };
+      break;
+    default:
+      activity.details = entry.details || {};
+  }
+
+  // 写入 per-user & global
+  data.users[entry.userId].activities.push(activity);
+  data.activities.push({ userId: entry.userId, ...activity });
+
+  // 保存
+  writeJsonFile(USER_LOG, data);
+
+  res.status(201).json({ status: 'logged', activity });
+});
+
+// 获取单个用户日志
 app.get('/user/:userId/activities', (req, res) => {
   const userId = req.params.userId;
-  const userData = readJsonFile('./user_data.json');
-  
-  if (userData.users[userId]) {
-    res.json(userData.users[userId].activities);
-  } else {
-    res.status(404).json({ error: 'User not found' });
+  const data   = readJsonFileSafe(USER_LOG);
+
+  const user = data.users[userId];
+  if (!user) {
+    return res.status(404).json({ error: 'User not found', activities: [] });
   }
+  res.json({ activities: user.activities });
 });
 
-// Get all activities (for admin purposes)
+// 获取所有日志（管理员用）
 app.get('/activities', (req, res) => {
-  const userData = readJsonFile('./user_data.json');
-  res.json(userData.activities);
+  const data = readJsonFileSafe(USER_LOG);
+  res.json({ activities: data.activities });
+});
+
+// （可选）Lessons CRUD，如果你还需要
+app.get('/lessons', (req, res) => {
+  const lessons = readDataJson('lessons.json');
+  res.json(lessons);
+});
+app.get('/lessons/:id', (req, res) => {
+  const lessons = readDataJson('lessons.json');
+  const id      = parseInt(req.params.id, 10);
+  const lesson  = lessons.find(l => l.id === id);
+  if (!lesson) return res.status(404).send('Lesson not found');
+  res.json(lesson);
+});
+app.post('/lessons', (req, res) => {
+  const newLesson = req.body;
+  const lessons   = readDataJson('lessons.json');
+  if (newLesson.id) {
+    const idx = lessons.findIndex(l => l.id === newLesson.id);
+    if (idx !== -1) lessons[idx] = newLesson;
+    else lessons.push(newLesson);
+  } else {
+    newLesson.id = lessons.length ? Math.max(...lessons.map(l => l.id)) + 1 : 1;
+    lessons.push(newLesson);
+  }
+  writeJsonFile(path.join(__dirname, 'data', 'lessons.json'), lessons);
+  res.json(newLesson);
 });
 
 app.listen(PORT, () => {
