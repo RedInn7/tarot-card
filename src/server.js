@@ -44,6 +44,9 @@ app.get('/learn/:id',(req, res) => {
   const id = parseInt(req.params.id);
   if (id == 1) res.sendFile(path.join(__dirname, 'public', 'learn_intro.html'))
   else if (id === 2) res.sendFile(path.join(__dirname, 'public', 'learn_story.html'))
+  else if (id === 3) res.sendFile(path.join(__dirname, 'public', 'learn_advanced.html'))
+  else if (id === 4) res.sendFile(path.join(__dirname, 'public', 'learn_symbolism.html'))
+  else res.status(404).send('Learning section not found');
 });
 
 app.get('/quiz', (req, res) => {
