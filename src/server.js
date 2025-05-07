@@ -44,6 +44,9 @@ app.get('/learn/:id',(req, res) => {
   const id = parseInt(req.params.id);
   if (id == 1) res.sendFile(path.join(__dirname, 'public', 'learn_intro.html'))
   else if (id === 2) res.sendFile(path.join(__dirname, 'public', 'learn_story.html'))
+  else if (id === 3) res.sendFile(path.join(__dirname, 'public', 'learn_advanced.html'))
+  else if (id === 4) res.sendFile(path.join(__dirname, 'public', 'learn_symbolism.html'))
+  else res.status(404).send('Learning section not found');
 });
 
 app.get('/quiz', (req, res) => {
@@ -105,7 +108,15 @@ app.get('/api/quiz', (req, res) => {
 app.get('/quiz/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const quiz = JSON.parse(fs.readFileSync('./data/quiz.json'));
-  const question = quiz.find(q => q.id === id);
+  // Support nested structure (e.g., section1)
+  let question = null;
+  for (const section of quiz) {
+    for (const key in section) {
+      question = section[key].find(q => q.id === id);
+      if (question) break;
+    }
+    if (question) break;
+  }
   if (question) res.json(question);
   else res.status(404).send('Question not found');
 });

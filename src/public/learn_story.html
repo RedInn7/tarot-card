@@ -103,7 +103,7 @@
     <div class="question-container">
       <select id="question-select" class="form-select w-75 mx-auto">
         <option value="q1">
-          What’s holding me back from finding the right partner, and how can I move forward?
+          What's holding me back from finding the right partner, and how can I move forward?
         </option>
         <option value="q2">
           Is now a good time to change jobs or should I stay and wait for a promotion?
@@ -132,7 +132,7 @@
       </div>
     </div>
 
-<<<<<<< Updated upstream
+
     <!-- Navigation -->
     <div class="d-flex justify-content-between my-4">
       <a href="/learn/1" class="btn btn-outline-secondary">Back</a>
@@ -142,6 +142,13 @@
       <a href="/about.html" class="btn btn-outline-secondary">Back</a>
       <button id="reveal-btn" class="btn btn-primary">Submit and Reveal Answers</button>
       <a href="/learn_advanced.html" class="btn btn-success">Next: Advanced Concepts</a>
+
+    <!-- Navigation and Reveal Button -->
+    <div class="d-flex justify-content-between my-4">
+      <a href="/learn/1" class="btn btn-outline-secondary">Back</a>
+      <button id="reveal-btn" class="btn btn-primary">Submit and Reveal Answers</button>
+      <a href="/learn/3" class="btn btn-success">Next: Advanced Concepts</a>
+
     </div>
   </div>
 
@@ -238,6 +245,28 @@
         const zoneNum = container.getAttribute('data-zone');
 
         // 翻正面
+    // Reveal fixed answers for each position
+    document.getElementById('reveal-btn').onclick = function() {
+      const fixedAnswers = {
+        1: {
+          title: 'PAST',
+          answer: 'Your past experiences have shaped your current situation. Reflect on what you have learned and how it influences your present.'
+        },
+        2: {
+          title: 'PRESENT',
+          answer: 'Currently, you are facing important choices. Stay mindful and trust your intuition to guide you through challenges.'
+        },
+        3: {
+          title: 'FUTURE',
+          answer: 'The future holds new opportunities. Stay open to change and be ready to embrace growth and transformation.'
+        }
+      };
+      document.querySelectorAll('.zone-container').forEach(container => {
+        const zone = container.querySelector('.drop-zone');
+        const infoDiv = container.querySelector('.card-info');
+        const zoneNum = container.getAttribute('data-zone');
+        // Reveal the card front if a card is present
+
         const img = zone.querySelector('img.card-back');
         if (img && img.dataset.card) {
           const card = JSON.parse(img.dataset.card);
@@ -247,7 +276,9 @@
           frontImg.className = 'card-front';
           zone.appendChild(frontImg);
         }
+
         // 固定解释
+        // Show the fixed answer
         if (fixedAnswers[zoneNum]) {
           infoDiv.innerHTML = `<h3>${fixedAnswers[zoneNum].title}</h3><p>${fixedAnswers[zoneNum].answer}</p>`;
         }
