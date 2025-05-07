@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Tarot Tutor — Quiz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    /* Quiz-specific styles */
+    .question-wrapper {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .question-content {
+      flex: 1;
+      margin-right: 1rem;
+    }
+    .question-content p.fw-bold {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+      color: #2d3436;
+    }
+    .form-check-label {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    .card-front {
+      width: 180px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-light bg-light px-3">
+    <a class="navbar-brand" href="/">Tarot Tutor</a>
+  </nav>
+
+  <div class="container my-4">
+    <h1 class="mb-4">Section 1</h1>
+    <form id="quiz-form">
+      <!-- JavaScript will inject questions here -->
+    </form>
+    <div class="text-end mt-3">
+      <button id="submit-btn" class="btn btn-success">Submit</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    (async function() {
+      const resp = await fetch('/api/quiz');
+      const data = await resp.json();
+      const questions = data[0].section1;
+      const form = document.getElementById('quiz-form');
+
+      for (let idx = 0; idx < questions.length; idx++) {
+        const q = questions[idx];
+        const wrapper = document.createElement('div');
+        wrapper.className = 'question-wrapper';
+
+        const content = document.createElement('div');
+        content.className = 'question-content';
+
+        // Question text
+        const qText = document.createElement('p');
+        qText.textContent = q.question;
+        qText.className = 'fw-bold';
+        content.appendChild(qText);
+
+        // Options
+        q.options.forEach((opt, i) => {
+          const div = document.createElement('div');
+          div.className = 'form-check';
+
+          const input = document.createElement('input');
+          input.className = 'form-check-input';
+          input.type = 'radio';
+          input.name = `q${idx}`;
+          input.id = `q${idx}o${i}`;
+          input.value = i;
+
+          const label = document.createElement('label');
+          label.className = 'form-check-label';
+          label.htmlFor = input.id;
+          label.textContent = opt;
+
+          div.appendChild(input);
+          div.appendChild(label);
+          content.appendChild(div);
+        });
+
+        // Card image on right
+        const imgContainer = document.createElement('div');
+        const cardResp = await fetch(`/api/getCard/${q.correctCardId}`);
+        const card = await cardResp.json();
+        const img = document.createElement('img');
+        img.src = card.image;
+        img.alt = card.name;
+        img.className = 'card-front';
+        imgContainer.appendChild(img);
+
+        wrapper.appendChild(content);
+        wrapper.appendChild(imgContainer);
+        form.appendChild(wrapper);
+      }
+
+      document.getElementById('submit-btn').addEventListener('click', e => {
+        e.preventDefault();
+        let correct = 0;
+        questions.forEach((q, idx) => {
+          const selected = form.querySelector(`input[name="q${idx}"]:checked`);
+          if (selected && parseInt(selected.value, 10) === q.answer) correct++;
+        });
+        const total = questions.length;
+        window.location.href = `/quiz_result?correct=${correct}&total=${total}`;
+      });
+    })();
+  </script>
+</body>
+</html>

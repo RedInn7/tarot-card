@@ -4,56 +4,80 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Tarot Tutor — Quiz</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- 全站样式 -->
   <link rel="stylesheet" href="/css/styles.css">
+
   <style>
-    /* Quiz-specific styles */
-    .question-wrapper {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid #e0e0e0;
+    /* ======== 页面统一风格 ======== */
+    body{
+      font-family:'Lora',serif;
+      background:url('/img/bg.png') no-repeat center center fixed;
+      background-size:cover;
+      color:#f8e7c1;
+      min-height:100vh;
     }
-    .question-content {
-      flex: 1;
-      margin-right: 1rem;
+    nav.custom-nav{
+      background:rgba(253,242,205,.9);
+      padding:1em 2em;
     }
-    .question-content p.fw-bold {
-      font-size: 1.25rem;
-      line-height: 1.6;
-      margin-bottom: 0.75rem;
-      color: #2d3436;
+    nav.custom-nav a{
+      color:#2c2c2c;
+      font-weight:700;
+      text-decoration:none;
+      margin-right:2rem;
+      transition:color .2s;
     }
-    .form-check-label {
-      font-size: 1rem;
-      line-height: 1.5;
+    nav.custom-nav a:hover{ color:#f9d451; }
+
+    /* ======== Quiz 专用样式（保持原有，但调色以配合深色背景） ======== */
+    .question-wrapper{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      margin-bottom:2rem;
+      padding-bottom:1rem;
+      border-bottom:1px solid rgba(255,255,255,.25);
     }
-    .card-front {
-      width: 180px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    .question-content{ flex:1; margin-right:1rem; }
+    .question-content p.fw-bold{
+      font-size:1.25rem;
+      line-height:1.6;
+      margin-bottom:.75rem;
+      color:#f9d451;
+    }
+    .form-check-label{ font-size:1rem; line-height:1.5; }
+    .card-front{
+      width:180px; border-radius:8px;
+      box-shadow:0 2px 6px rgba(0,0,0,.4);
     }
   </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-light bg-light px-3">
-    <a class="navbar-brand" href="/">Tarot Tutor</a>
+  <!-- ======== 导航 ======== -->
+  <nav class="custom-nav">
+    <a href="/">Tarot Tutor</a>
+    <a href="/about.html">About Three Spread</a>
+    <a href="/learn_story.html">Learning</a>
+    <a href="/quiz">Quiz</a>
   </nav>
 
+  <!-- ======== Quiz 主体 ======== -->
   <div class="container my-4">
-    <h1 class="mb-4">Section 1</h1>
-    <form id="quiz-form">
-      <!-- JavaScript will inject questions here -->
-    </form>
+    <h1 class="mb-4">Section 1</h1>
+    <form id="quiz-form"></form>
     <div class="text-end mt-3">
       <button id="submit-btn" class="btn btn-success">Submit</button>
     </div>
   </div>
 
-  <!-- Scripts -->
+  <!-- ======== Scripts ======== -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script>
     (async function() {
@@ -64,66 +88,73 @@
 
       for (let idx = 0; idx < questions.length; idx++) {
         const q = questions[idx];
-        const wrapper = document.createElement('div');
-        wrapper.className = 'question-wrapper';
 
-        const content = document.createElement('div');
-        content.className = 'question-content';
+        /* ----- 外层容器 ----- */
+        const wrapper = Object.assign(document.createElement('div'), {
+          className:'question-wrapper'
+        });
 
-        // Question text
-        const qText = document.createElement('p');
-        qText.textContent = q.question;
-        qText.className = 'fw-bold';
+        /* ----- 左侧文字+选项 ----- */
+        const content = Object.assign(document.createElement('div'), {
+          className:'question-content'
+        });
+
+        /* 问题文本 */
+        const qText = Object.assign(document.createElement('p'), {
+          textContent:q.question, className:'fw-bold'
+        });
         content.appendChild(qText);
 
-        // Options
-        q.options.forEach((opt, i) => {
-          const div = document.createElement('div');
-          div.className = 'form-check';
-
-          const input = document.createElement('input');
-          input.className = 'form-check-input';
-          input.type = 'radio';
-          input.name = `q${idx}`;
-          input.id = `q${idx}o${i}`;
-          input.value = i;
-
-          const label = document.createElement('label');
-          label.className = 'form-check-label';
-          label.htmlFor = input.id;
-          label.textContent = opt;
-
+        /* 选项 */
+        q.options.forEach((opt,i)=>{
+          const div   = Object.assign(document.createElement('div'),{className:'form-check'});
+          const input = Object.assign(document.createElement('input'),{
+            className:'form-check-input',
+            type:'radio',
+            name:`q${idx}`,
+            id:`q${idx}o${i}`,
+            value:i
+          });
+          const label = Object.assign(document.createElement('label'),{
+            className:'form-check-label',
+            htmlFor:input.id,
+            textContent:opt
+          });
           div.appendChild(input);
           div.appendChild(label);
           content.appendChild(div);
         });
 
-        // Card image on right
+        /* ----- 右侧卡牌 ----- */
         const imgContainer = document.createElement('div');
         const cardResp = await fetch(`/api/getCard/${q.correctCardId}`);
         const card = await cardResp.json();
-        const img = document.createElement('img');
-        img.src = card.image;
-        img.alt = card.name;
-        img.className = 'card-front';
+        const img = Object.assign(document.createElement('img'),{
+          src:card.image,
+          alt:card.name,
+          className:'card-front'
+        });
         imgContainer.appendChild(img);
 
+        /* ----- 拼装 ----- */
         wrapper.appendChild(content);
         wrapper.appendChild(imgContainer);
         form.appendChild(wrapper);
       }
 
+      /* ----- 提交按钮 ----- */
       document.getElementById('submit-btn').addEventListener('click', e => {
         e.preventDefault();
         let correct = 0;
         questions.forEach((q, idx) => {
-          const selected = form.querySelector(`input[name="q${idx}"]:checked`);
-          if (selected && parseInt(selected.value, 10) === q.answer) correct++;
+          const sel = form.querySelector(`input[name="q${idx}"]:checked`);
+          if (sel && parseInt(sel.value, 10) === q.answer) correct++;
         });
         const total = questions.length;
-        window.location.href = `/quiz_result?correct=${correct}&total=${total}`;
+        window.location.href = `/quiz_result.html?correct=${correct}&total=${total}`;
       });
     })();
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
