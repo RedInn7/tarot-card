@@ -58,9 +58,10 @@
       </div>
     </div>
 
-    <!-- Navigation -->
+    <!-- Navigation and Reveal Button -->
     <div class="d-flex justify-content-between my-4">
       <a href="/learn/1" class="btn btn-outline-secondary">Back</a>
+      <button id="reveal-btn" class="btn btn-primary">Submit and Reveal Answers</button>
       <a href="/learn/3" class="btn btn-success">Next: Advanced Concepts</a>
     </div>
   </main>
@@ -151,6 +152,43 @@
         currentCard = null;
       }
     });
+
+    // Reveal fixed answers for each position
+    document.getElementById('reveal-btn').onclick = function() {
+      const fixedAnswers = {
+        1: {
+          title: 'PAST',
+          answer: 'Your past experiences have shaped your current situation. Reflect on what you have learned and how it influences your present.'
+        },
+        2: {
+          title: 'PRESENT',
+          answer: 'Currently, you are facing important choices. Stay mindful and trust your intuition to guide you through challenges.'
+        },
+        3: {
+          title: 'FUTURE',
+          answer: 'The future holds new opportunities. Stay open to change and be ready to embrace growth and transformation.'
+        }
+      };
+      document.querySelectorAll('.zone-container').forEach(container => {
+        const zone = container.querySelector('.drop-zone');
+        const infoDiv = container.querySelector('.card-info');
+        const zoneNum = container.getAttribute('data-zone');
+        // Reveal the card front if a card is present
+        const img = zone.querySelector('img.card-back');
+        if (img && img.dataset.card) {
+          const card = JSON.parse(img.dataset.card);
+          zone.innerHTML = '';
+          const frontImg = document.createElement('img');
+          frontImg.src = card.image;
+          frontImg.className = 'card-front';
+          zone.appendChild(frontImg);
+        }
+        // Show the fixed answer
+        if (fixedAnswers[zoneNum]) {
+          infoDiv.innerHTML = `<h3>${fixedAnswers[zoneNum].title}</h3><p>${fixedAnswers[zoneNum].answer}</p>`;
+        }
+      });
+    };
   </script>
 </body>
 </html>
