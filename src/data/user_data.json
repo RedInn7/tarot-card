@@ -158,5 +158,25 @@
     "action": "start_learning",
     "timestamp": "2025-05-12T09:19:22.295Z",
     "userId": "0a034d86-cdd4-41d3-8344-b1502c221c21"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T09:43:49.823Z",
+    "userId": "0a034d86-cdd4-41d3-8344-b1502c221c21"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T09:44:01.372Z",
+    "userId": "0a034d86-cdd4-41d3-8344-b1502c221c21"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T09:44:21.769Z",
+    "userId": "0a034d86-cdd4-41d3-8344-b1502c221c21"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T09:45:03.179Z",
+    "userId": "0a034d86-cdd4-41d3-8344-b1502c221c21"
   }
 ]
