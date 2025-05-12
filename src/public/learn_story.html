@@ -11,10 +11,8 @@
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet"
   />
+  <!-- Main Styles -->
   <link rel="stylesheet" href="/css/styles.css" />
-  <style>
-    
-  </style>
 </head>
 <body>
   <nav class="custom-nav">
@@ -68,8 +66,8 @@
     </div>
 
     <div class="footer-nav">
-      <a href="/index.html">Back</a>
-      <a href="/learn_advanced.html">Next: Advanced Topics</a>
+      <a href="/select_track.html">Back</a>
+      <a id="next-adv" href="/learn_advanced.html">Next: Advanced Topics</a>
     </div>
   </div>
 
@@ -83,10 +81,17 @@
     const dropZones = document.querySelectorAll('.drop-zone');
     const clearBtn = document.getElementById('clear-btn');
     const questionSelect = document.getElementById('question-select');
+
+    const params = new URLSearchParams(window.location.search);
+    const defaultQ = params.get('question');
+    if (defaultQ) {
+      questionSelect.value = defaultQ;
+    }
+
     let currentCard = null;
 
     document.querySelectorAll('.card-info').forEach(div => {
-      div.innerHTML = '<span class="important-caption">Drag your card.</span>';
+      div.innerHTML = '<span class="emph-caption">Drag your card.</span>';
     });
 
     getCardBtn.addEventListener('click', async () => {
@@ -131,7 +136,7 @@
 
         const container = zone.closest('.zone-container');
         const infoDiv = container.querySelector('.card-info');
-        infoDiv.innerHTML = '<span class="important-caption">Click to reveal.</span>';
+        infoDiv.innerHTML = '<span class="emph-caption">Click to reveal.</span>';
 
         img.addEventListener('click', () => {
           // show front image in zone
@@ -153,8 +158,8 @@
           }
           infoDiv.innerHTML =
             `<h3>${card.name}</h3>` +
-            `<p>${card.description}</p>` +
-            `<p class="love-meaning">${advice}</p>`;
+            `<p class="emph-line">${card.description}</p>` +
+            `<p>${advice}</p>`;
         });
 
         if (currentCard) {
@@ -172,6 +177,20 @@
       if (currentCard) {
         sourceContainer.removeChild(currentCard);
         currentCard = null;
+      }
+    });
+
+    const nextAdv = document.getElementById('next-adv');
+    nextAdv.addEventListener('click', e => {
+      e.preventDefault();  // stop immediate navigation
+      // ask the user
+      const ok = window.confirm(
+        'Have you tried multiple times to know enough tarot cards? \n\n Click “OK” to proceed or “Cancel” to stay here and engage more.'
+      );
+      if (ok) {
+        window.location.href = nextAdv.href;
+      } else {
+        clearBtn.click();          // re-use your existing clear logic
       }
     });
   </script>

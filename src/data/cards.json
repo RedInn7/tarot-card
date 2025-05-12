@@ -6,7 +6,16 @@
     "image": "https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/df1cae60-a1f2-4726-8f60-5f463d6e5f3e/thefool.jpg?format=1000w",
     "relationshipAdvice": "Fear of uncertainty holds you back; take the first leap of faith toward love.",
     "careerAdvice": "Your adventurous spirit calls for change; now is a good time to explore new job opportunities.",
-    "healingAdvice": "Release fear of the unknown and trust the journey ahead to begin healing."
+    "healingAdvice": "Release fear of the unknown and trust the journey ahead to begin healing.",
+    "symbols": [
+      "Cliff",
+      "Dog",
+      "White Rose"
+    ],
+    "colors": [
+      "yellow",
+      "blue"
+    ]
   },
   {
     "id": 1,
@@ -15,7 +24,16 @@
     "image": "https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/90f32f58-f402-4b13-a949-2a4eff3c5667/Picsart_22-05-17_01-05-30-660.jpg?format=1000w",
     "relationshipAdvice": "Doubting your own power stalls progress; harness your will to pursue love.",
     "careerAdvice": "Your skills and initiative make now ideal to manifest a new career path.",
-    "healingAdvice": "Release self-doubt and use your inner resources to empower your healing."
+    "healingAdvice": "Release self-doubt and use your inner resources to empower your healing.",
+    "symbols": [
+      "Infinity Symbol",
+      "Four Tools",
+      "Table"
+    ],
+    "colors": [
+      "red",
+      "white"
+    ]
   },
   {
     "id": 2,
@@ -24,7 +42,16 @@
     "image": "https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/e423056e-a7ec-491e-8071-fe9abe67de80/Picsart_22-05-17_01-04-40-636.jpg?format=1000w",
     "relationshipAdvice": "Ignoring your intuition blocks connection; trust your inner voice in relationships.",
     "careerAdvice": "Reflection over action is advised; wait for clarity before changing jobs.",
-    "healingAdvice": "Release hidden doubts by listening inward and let your intuition guide healing."
+    "healingAdvice": "Release hidden doubts by listening inward and let your intuition guide healing.",
+    "symbols": [
+      "Pomegranate",
+      "Crescent Moon",
+      "Scroll"
+    ],
+    "colors": [
+      "blue",
+      "silver"
+    ]
   },
   {
     "id": 3,
@@ -33,7 +60,16 @@
     "image": "https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/6d1f52f7-9f7c-4d04-a8c4-c9fe04085c45/Picsart_22-05-17_01-04-00-058.jpg?format=1000w",
     "relationshipAdvice": "Neglecting self-care prevents love; nurture yourself to attract the right partner.",
     "careerAdvice": "Opportunities for growth abound; consider new roles that foster abundance now.",
-    "healingAdvice": "Release self-neglect by nurturing your needs with compassion to heal."
+    "healingAdvice": "Release self-neglect by nurturing your needs with compassion to heal.",
+    "symbols": [
+      "Wheat",
+      "Venus Symbol",
+      "Crown of Stars"
+    ],
+    "colors": [
+      "green",
+      "red"
+    ]
   },
   {
     "id": 4,
@@ -42,7 +78,16 @@
     "image": "https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/7a750aeb-4ae6-43b6-b1c3-0fcbdea35405/Picsart_22-05-17_01-03-17-436.jpg?format=1000w",
     "relationshipAdvice": "Fear of taking control stalls progress; set clear boundaries and lead with confidence.",
     "careerAdvice": "Stability calls for patience; staying may yield the promotion you seek.",
-    "healingAdvice": "Release chaos by establishing order and reclaim control to heal."
+    "healingAdvice": "Release chaos by establishing order and reclaim control to heal.",
+    "symbols": [
+      "Throne",
+      "Rams",
+      "Armor"
+    ],
+    "colors": [
+      "red",
+      "gray"
+    ]
   },
   {
     "id": 5,
@@ -51,7 +96,16 @@
     "image": "https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/916eb224-3583-4aad-ac82-3288a3ffe246/Picsart_22-05-17_01-02-46-755.jpg?format=1000w",
     "relationshipAdvice": "Resisting shared values blocks commitment; embrace tradition to move forward.",
     "careerAdvice": "Learning within existing structures may pay off; waiting could bring promotion.",
-    "healingAdvice": "Release doubt in guidance and seek wisdom from mentors for healing."
+    "healingAdvice": "Release doubt in guidance and seek wisdom from mentors for healing.",
+    "symbols": [
+      "Crossed Keys",
+      "Altar",
+      "Followers"
+    ],
+    "colors": [
+      "red",
+      "white"
+    ]
   },
   {
     "id": 6,
@@ -60,7 +114,16 @@
     "image": "https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/b7c1f87a-8d62-458c-bc1c-7a1dab732d0c/Picsart_22-05-17_01-01-55-228.jpg?format=1000w",
     "relationshipAdvice": "Fear of making the wrong choice stalls you; trust your heart and decide honestly.",
     "careerAdvice": "A pivotal choice awaits; follow your values if considering a new job now.",
-    "healingAdvice": "Release guilt over past decisions and choose self-love to begin healing."
+    "healingAdvice": "Release guilt over past decisions and choose self-love to begin healing.",
+    "symbols": [
+      "Angel",
+      "Adam and Eve",
+      "Tree"
+    ],
+    "colors": [
+      "yellow",
+      "blue"
+    ]
   },
   {
     "id": 7,
@@ -69,7 +132,16 @@
     "image": "https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/e1a56a67-fe7c-4a81-bd01-f5689b3deed4/Picsart_22-05-17_01-00-55-244.jpg?format=1000w",
     "relationshipAdvice": "Lacking direction holds you back; set goals and move forward with determination.",
     "careerAdvice": "Your drive supports a change now; harness confidence to advance your career.",
-    "healingAdvice": "Release passivity by taking charge of your emotions to heal."
+    "healingAdvice": "Release passivity by taking charge of your emotions to heal.",
+    "symbols": [
+      "Chariot",
+      "Sphinxes",
+      "Stars"
+    ],
+    "colors": [
+      "black",
+      "white"
+    ]
   },
   {
     "id": 8,
@@ -78,7 +150,16 @@
     "image": "https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/f605187c-a164-41a8-a507-5be207100dfa/Picsart_22-05-17_00-59-49-885.jpg?format=1000w",
     "relationshipAdvice": "Doubting your courage stops intimacy; practice gentle confidence to connect.",
     "careerAdvice": "Your resilience favors new challenges; now is a good time for a career move.",
-    "healingAdvice": "Release harsh self-judgment and show yourself compassion to heal."
+    "healingAdvice": "Release harsh self-judgment and show yourself compassion to heal.",
+    "symbols": [
+      "Lion",
+      "Infinity Symbol",
+      "Woman"
+    ],
+    "colors": [
+      "yellow",
+      "green"
+    ]
   },
   {
     "id": 9,
@@ -87,7 +168,16 @@
     "image": "https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/1a9ca78c-a52a-4bda-b725-45fcd05e3d37/Picsart_22-05-17_00-59-20-808.jpg?format=1000w",
     "relationshipAdvice": "Neglecting reflection hides your needs; spend time alone to know what you want.",
     "careerAdvice": "Reflection over action is wise; wait until you’re clear on goals before changing jobs.",
-    "healingAdvice": "Release distractions by seeking solitude and inner guidance to heal."
+    "healingAdvice": "Release distractions by seeking solitude and inner guidance to heal.",
+    "symbols": [
+      "Lantern",
+      "Cloak",
+      "Staff"
+    ],
+    "colors": [
+      "gray",
+      "yellow"
+    ]
   },
   {
     "id": 10,
@@ -96,7 +186,16 @@
     "image": "https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/b2164acd-7d30-473c-ab0f-a87d345b3905/Picsart_22-05-17_00-58-53-403.jpg?format=1000w",
     "relationshipAdvice": "Clinging to old patterns blocks new love; embrace change and trust fate.",
     "careerAdvice": "Fortune favors action; now is a good time to explore new career paths.",
-    "healingAdvice": "Release resistance to life’s cycles and flow with change to heal."
+    "healingAdvice": "Release resistance to life’s cycles and flow with change to heal.",
+    "symbols": [
+      "Wheel",
+      "Sphinx",
+      "Anubis"
+    ],
+    "colors": [
+      "blue",
+      "orange"
+    ]
   },
   {
     "id": 11,
@@ -105,7 +204,16 @@
     "image": "https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/a0674f4e-c9a9-421b-9492-39301d50cbcc/Picsart_22-05-17_00-58-16-442.jpg?format=1000w",
     "relationshipAdvice": "Avoiding accountability stalls growth; act with fairness to move forward.",
     "careerAdvice": "If your efforts have been balanced, staying could yield promotion; weigh options carefully.",
-    "healingAdvice": "Release imbalance by owning your actions and seeking forgiveness to heal."
+    "healingAdvice": "Release imbalance by owning your actions and seeking forgiveness to heal.",
+    "symbols": [
+      "Sword",
+      "Scales",
+      "Pillow"
+    ],
+    "colors": [
+      "red",
+      "blue"
+    ]
   },
   {
     "id": 12,
@@ -114,7 +222,16 @@
     "image": "https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/98370ae2-9310-4357-bce9-237dc26c493d/Picsart_22-05-17_00-57-23-440.jpg?format=1000w",
     "relationshipAdvice": "Resisting pause prevents insight; surrender control and gain new perspective.",
     "careerAdvice": "Wait for clarity rather than rushing; a new viewpoint will guide your decision.",
-    "healingAdvice": "Release the need to force outcomes and allow time for healing insights."
+    "healingAdvice": "Release the need to force outcomes and allow time for healing insights.",
+    "symbols": [
+      "Halo",
+      "Rope",
+      "Tree"
+    ],
+    "colors": [
+      "blue",
+      "green"
+    ]
   },
   {
     "id": 13,
@@ -123,7 +240,16 @@
     "image": "https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/60f459d5-b4a1-44b4-b6c1-24ae8e45424e/Picsart_22-05-17_00-56-47-780.jpg?format=1000w",
     "relationshipAdvice": "Fear of endings blocks new love; accept closure to open your heart.",
     "careerAdvice": "Transformation is at hand; now is the time to pursue new career opportunities.",
-    "healingAdvice": "Release old patterns fully and embrace rebirth to start healing."
+    "healingAdvice": "Release old patterns fully and embrace rebirth to start healing.",
+    "symbols": [
+      "Skeleton",
+      "Black Flag",
+      "White Rose"
+    ],
+    "colors": [
+      "black",
+      "white"
+    ]
   },
   {
     "id": 14,
@@ -132,7 +258,16 @@
     "image": "https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/aff880ed-134b-4ae6-b662-19c5287c2277/Picsart_22-05-17_00-55-50-639.jpg?format=1000w",
     "relationshipAdvice": "Impatience disturbs harmony; practice moderation to attract balanced love.",
     "careerAdvice": "Patience and balance suggest waiting for that promotion rather than jumping ship.",
-    "healingAdvice": "Release extremes and integrate balance into your life for steady healing."
+    "healingAdvice": "Release extremes and integrate balance into your life for steady healing.",
+    "symbols": [
+      "Angel",
+      "Two Cups",
+      "Water Flow"
+    ],
+    "colors": [
+      "blue",
+      "orange"
+    ]
   },
   {
     "id": 15,
@@ -141,7 +276,16 @@
     "image": "https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/e7aaa67a-4e1e-4716-9e73-12427816561e/Picsart_22-05-17_00-55-13-612.jpg?format=1000w",
     "relationshipAdvice": "Attachments to toxic patterns hold you back; break free to find true love.",
     "careerAdvice": "If you feel trapped, a job change now may free you more than waiting would.",
-    "healingAdvice": "Release self-imposed chains by confronting your shadows to heal."
+    "healingAdvice": "Release self-imposed chains by confronting your shadows to heal.",
+    "symbols": [
+      "Goat",
+      "Chains",
+      "Inverted Torch"
+    ],
+    "colors": [
+      "black",
+      "red"
+    ]
   },
   {
     "id": 16,
@@ -150,7 +294,16 @@
     "image": "https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/1b683ecd-03f6-47b4-83f5-9c8a869c6a43/Picsart_22-05-17_00-53-56-828.jpg?format=1000w",
     "relationshipAdvice": "Fear of upheaval stalls growth; embrace disruption to rebuild stronger love.",
     "careerAdvice": "Upheaval is at hand; a job switch now could spark new opportunities.",
-    "healingAdvice": "Release attachment to old structures and allow collapse to clear the way for healing."
+    "healingAdvice": "Release attachment to old structures and allow collapse to clear the way for healing.",
+    "symbols": [
+      "Lightning",
+      "Falling Figures",
+      "Tower"
+    ],
+    "colors": [
+      "gray",
+      "yellow"
+    ]
   },
   {
     "id": 17,
@@ -159,7 +312,16 @@
     "image": "https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/2a9b744e-d86e-4346-bba0-2b68d465022f/Picsart_22-05-17_00-53-27-051.jpg?format=1000w",
     "relationshipAdvice": "Losing hope inhibits connection; rekindle optimism to attract the right partner.",
     "careerAdvice": "Your inspiration is high; now is a good moment to pursue a new career path.",
-    "healingAdvice": "Release despair and focus on hope to guide your healing."
+    "healingAdvice": "Release despair and focus on hope to guide your healing.",
+    "symbols": [
+      "Star",
+      "Water Pitcher",
+      "Bird"
+    ],
+    "colors": [
+      "blue",
+      "yellow"
+    ]
   },
   {
     "id": 18,
@@ -168,7 +330,16 @@
     "image": "https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/6cdf3bb9-b729-4178-a02c-8cef5df09490/Picsart_22-05-17_00-53-00-831.jpg?format=1000w",
     "relationshipAdvice": "Hidden fears block intimacy; confront illusions and seek clarity in love.",
     "careerAdvice": "Uncertainty suggests waiting; clarify your path before changing jobs.",
-    "healingAdvice": "Release illusions by shining light on hidden doubts to heal."
+    "healingAdvice": "Release illusions by shining light on hidden doubts to heal.",
+    "symbols": [
+      "Moon",
+      "Crayfish",
+      "Dog and Wolf"
+    ],
+    "colors": [
+      "blue",
+      "silver"
+    ]
   },
   {
     "id": 19,
@@ -177,7 +348,16 @@
     "image": "https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/16616d12-f9f4-47eb-b668-0f3819001cc5/Picsart_22-05-17_00-52-25-337.jpg?format=1000w",
     "relationshipAdvice": "Neglecting joy prevents attraction; embrace positivity to find the right partner.",
     "careerAdvice": "Your confidence shines; now is an excellent time to pursue new career opportunities.",
-    "healingAdvice": "Release pessimism and bask in optimism to foster healing."
+    "healingAdvice": "Release pessimism and bask in optimism to foster healing.",
+    "symbols": [
+      "Sun",
+      "Sunflowers",
+      "Child on Horse"
+    ],
+    "colors": [
+      "yellow",
+      "red"
+    ]
   },
   {
     "id": 20,
@@ -186,7 +366,16 @@
     "image": "https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/93508053-b396-440a-b1d4-97bec5f1c8ec/Picsart_22-05-17_00-51-45-739.jpg?format=1000w",
     "relationshipAdvice": "Avoiding self-evaluation stalls love; reflect and forgive to move forward.",
     "careerAdvice": "A pivotal moment calls for decision; now is the time to choose your next step.",
-    "healingAdvice": "Release guilt through self-forgiveness to awaken deeper healing."
+    "healingAdvice": "Release guilt through self-forgiveness to awaken deeper healing.",
+    "symbols": [
+      "Angel",
+      "Trumpet",
+      "Rising Dead"
+    ],
+    "colors": [
+      "yellow",
+      "white"
+    ]
   },
   {
     "id": 21,
@@ -195,6 +384,15 @@
     "image": "https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/9e205b70-7c17-4c3f-84ec-3b47ce333d63/Picsart_22-05-17_00-50-42-638.jpg?format=1000w",
     "relationshipAdvice": "Fear of completion holds you back; celebrate achievements to open your heart.",
     "careerAdvice": "Having achieved much, now is a good time to seek new horizons rather than wait.",
-    "healingAdvice": "Release resistance to closure and embrace completion to heal fully."
+    "healingAdvice": "Release resistance to closure and embrace completion to heal fully.",
+    "symbols": [
+      "Wreath",
+      "Dancers",
+      "Four Creatures"
+    ],
+    "colors": [
+      "blue",
+      "green"
+    ]
   }
 ]

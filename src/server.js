@@ -90,6 +90,18 @@ app.get('/api/getCard/:id', (req, res) => {
   res.json(card);
 });
 
+app.get('/api/getAllCards', (req, res) => {
+  const dataPath = path.join(__dirname, 'data', 'cards.json');
+  let cards;
+  try {
+    cards = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
+  } catch (err) {
+    console.error('Failed to load card_info.json:', err);
+    return res.status(500).json({ error: 'Cannot load cards data' });
+  }
+  res.json(cards);
+});
+
 // GET /api/quiz
 app.get('/api/quiz', (req, res) => {
   const quiz = readJsonFile(path.join(__dirname, 'data', 'quiz.json'));
