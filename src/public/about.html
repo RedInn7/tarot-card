@@ -7,46 +7,24 @@
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
-
   <style>
-    body {
-      margin: 0;
-      font-family: 'Lora', serif;
-      background: url('/img/bg.png') no-repeat center center fixed;
-      background-size: cover;
-      color: #f8e7c1;
-    }
-    nav {
-      background-color: rgba(253,242,205,0.9);
-      padding: 1em 2em;
-      display: flex;
-      justify-content: space-around;
-      font-size: 1.2em;
-    }
-    nav a {
-      text-decoration: none;
-      color: #2c2c2c;
-      font-weight: bold;
-      transition: color .2s;
-    }
-    nav a:hover {
-      color: #f9d451;
-    }
+    /* Main */
     .container {
+      max-width: 1000px;
+      margin: 2rem auto;
       text-align: center;
-      padding: 1.5em 1em;
+      padding: 0 1rem;
     }
     .title {
-      font-size: 2.8em;
+      font-size: 2.5rem;
       color: #f9d451;
-      margin-bottom: 1em;
+      margin-bottom: 1.5rem;
     }
     .cards {
       display: flex;
       justify-content: center;
-      gap: 3em;
-      margin-bottom: 2em;
-      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 0.5rem;
     }
     .card {
       display: flex;
@@ -54,30 +32,42 @@
       align-items: center;
     }
     .card img {
-      width: 220px;
-      height: auto;
+      width: 180px;
       border: 2px solid #fff;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.3);
     }
     .card-label {
-      margin-top: 0.5em;
-      font-size: 1.9em;
+      margin-top: 0.5rem;
       color: #f9d451;
+      font-size: 1.2rem;
     }
-    .description {
-      max-width: 700px;
-      margin: 0 auto;
-      font-size: 1.2em;
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 1.2em;
-      border-radius: 10px;
-      line-height: 1.6em;
+    .sections {
+      display: flex;
+      justify-content: space-between;
+      text-align: left;
+      margin-top: 2rem;
+      gap: 2rem;
     }
+    .sections > div {
+      flex: 1;
+    }
+    .sections h2, .sections h3 {
+      color: #f9d451;
+      margin-bottom: 0.5rem;
+    }
+    .sections p, .sections li {
+      color: #e2d2ad;
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 0.5rem;
+    }
+    ul { padding-left: 1.2rem; }
   </style>
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-  <!-- Navbar -->
-  <nav>
+  <nav class="custom-nav">
     <a href="/">Tarot Tutor</a>
     <a href="/about.html">About Three Spread</a>
     <a href="/learn_story.html">Learning</a>
@@ -88,46 +78,38 @@
     <div class="title">THE THREE SPREAD</div>
     <div class="cards">
       <div class="card">
-        <img src="https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/b7c1f87a-8d62-458c-bc1c-7a1dab732d0c/Picsart_22-05-17_01-01-55-228.jpg?format=1000w" alt="The High Priestess" />
+        <img src="https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/b7c1f87a-8d62-458c-bc1c-7a1dab732d0c/Picsart_22-05-17_01-01-55-228.jpg?format=1000w" alt="Past Card">
         <div class="card-label">Past</div>
       </div>
       <div class="card">
-        <img src="https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/e1a56a67-fe7c-4a81-bd01-f5689b3deed4/Picsart_22-05-17_01-00-55-244.jpg?format=1000w" alt="The Fool" />
+        <img src="https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/e1a56a67-fe7c-4a81-bd01-f5689b3deed4/Picsart_22-05-17_01-00-55-244.jpg?format=1000w" alt="Present Card">
         <div class="card-label">Present</div>
       </div>
       <div class="card">
-        <img src="https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/f605187c-a164-41a8-a507-5be207100dfa/Picsart_22-05-17_00-59-49-885.jpg?format=1000w" alt="The Magician" />
+        <img src="https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/f605187c-a164-41a8-a507-5be207100dfa/Picsart_22-05-17_00-59-49-885.jpg?format=1000w" alt="Future Card">
         <div class="card-label">Future</div>
       </div>
-    </section>
-
-    <!-- How It Works -->
-    <section class="mb-5">
-      <h2 class="mb-3">How It Works</h2>
-      <p>
-        Three tarot cards are drawn and placed from left to right. Each card represents a specific aspect of the topic. The positions (e.g., Past – Present – Future) can be customized to suit different questions.
-      </p>
-    </section>
-
-    <!-- Popular Interpretations -->
-    <section class="mb-5">
-      <h3 class="mb-3">Popular Interpretations</h3>
-      <div class="mb-4">
-        <p><strong>Card 1</strong>: Past; Present; You / The Other Person; Mind</p>
-        <p><strong>Card 2</strong>: Present; Situation; Challenge; Body</p>
-        <p><strong>Card 3</strong>: Future; Advice; Advice; Spirit</p>
-      </div>
-    </section>
-
-    <!-- Navigation -->
-    <div class="d-flex justify-content-between">
-      <a href="/learn/1" class="btn btn-outline-secondary">Back</a>
-      <a href="/quiz" class="btn btn-success">Next: Take the Quiz</a>
     </div>
-    <div class="description">
-      <strong>The Three-Card Spread</strong> is one of the most fundamental layouts in tarot reading,
-      providing a structured glimpse into the past, present, and future. It is commonly used to
-      develop interpretation skills and build a deeper understanding of how individual cards interact within a reading.
+
+    <div class="sections">
+      <div>
+        <h2>How It Works</h2>
+        <p>Three tarot cards are drawn and placed from left to right. Each card represents a specific aspect of the topic.</p>
+        <p>The positions (Past, Present, Future) help structure your interpretation.</p>
+      </div>
+      <div>
+        <h3>Popular Interpretations</h3>
+        <ul>
+          <li><strong>Card 1</strong>: Past; Present; You / Other</li>
+          <li><strong>Card 2</strong>: Present; Situation; Challenge</li>
+          <li><strong>Card 3</strong>: Future; Advice; Outcome</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-nav">
+      <a href="/learn_story.html">Back</a>
+      <a href="/quiz">Next: Take the Quiz</a>
     </div>
   </div>
 </body>

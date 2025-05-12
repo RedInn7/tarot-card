@@ -1,34 +1,62 @@
 @import url('[https://fonts.googleapis.com/css2?family=Lora\&display=swap](https://fonts.googleapis.com/css2?family=Lora&display=swap)');
 
 
-body {
-margin: 0;
-font-family: 'Lora', serif;
-background: url('/img/bg.png') no-repeat center center;
-background-size: cover;
-color: #f8e7c1;
+body{
+    font-family:'Lora',serif;
+    background:url('/img/bg.png') no-repeat center center fixed;
+    background-size:cover;
+    color:#f8e7c1;
+    min-height:100vh;
 }
 
-
 nav {
-background-color: #fdf2cd;
-padding: 1em 0;
-display: flex;
-justify-content: space-around;
+    background-color: #fdf2cd;
+    padding: 1em 0;
+    display: flex;
+    justify-content: space-around;
 }
 
 nav a {
-text-decoration: none;
-color: #2c2c2c;
-font-weight: bold;
-font-size: 1.25em;
-font-family: 'Lora', serif;
-transition: color 0.2s;
+    text-decoration: none;
+    color: #2c2c2c;
+    font-weight: bold;
+    font-size: 1.25em;
+    font-family: 'Lora', serif;
+    transition: color 0.2s;
 }
 
 nav a\:hover {
-color: #f9d451;
+    color: #f9d451;
 }
+
+nav.custom-nav{
+    background:rgba(253,242,205,.9);
+    padding:1em 2em;
+}
+nav.custom-nav a{
+    color:#2c2c2c;
+    font-weight:700;
+    text-decoration:none;
+    margin-right:2rem;
+    transition:color .2s;
+}
+nav.custom-nav a:hover{ color:#f9d451; }
+
+/* Navigation buttons */
+.footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 0;
+}
+.footer-nav a {
+    color: #f8e7c1;
+    background: rgba(41, 128, 185, 0.8);
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+.footer-nav a:hover { background: rgba(41, 128, 185, 1); }
 
 .container {
 text-align: center;
@@ -183,11 +211,11 @@ margin-top: 12px;
 .card-info h3 {
 margin: 4px 0;
 font-size: 16px;
-color: #2d3436;
+color: #f9d451;
 }
 .card-info p {
 font-size: 14px;
-color: #636e72;
+color:#e2d2ad;
 margin: 4px 0;
 }
 
