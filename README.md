@@ -2,7 +2,9 @@
 
 ## How to run
 
-`cd src`
+`git clone https://github.com/RedInn7/tarot-card.git`
+
+`cd tarot-card/src`
 
 `npm install` 
 
