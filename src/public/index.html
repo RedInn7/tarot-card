@@ -71,11 +71,38 @@
       and unveil your destiny.
     </p>
     <div class="hero-buttons">
-      <a href="/learn_story.html" id="start-learning-btn" class="primary">
+      <a href="/learn_intro.html" id="start-learning-btn" class="primary">
         Start Learning
       </a>
       <a href="/about.html" class="secondary">About Tarot</a>
     </div>
   </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1) ensure we have a userId stored
+      let userId = localStorage.getItem('userId');
+      if (!userId) {
+        userId = crypto.randomUUID();
+        localStorage.setItem('userId', userId);
+      }
+  
+      // 2) wire up Start Learning click
+      const btn = document.getElementById('start-learning-btn');
+      btn.addEventListener('click', () => {
+        const event = {
+          action: 'start_learning',
+          timestamp: new Date().toISOString(),
+          userId
+        };
+  
+        fetch('/api/logUserActivity', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(event)
+        }).catch(console.error);
+      });
+    });
+  </script>
 </body>
 </html>
