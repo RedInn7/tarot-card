@@ -3,84 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tarot Tutor · Three‑Card Practice</title>
-
+  <title>Tarot Card Drag and Drop</title>
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
-
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- 站点主样式 -->
-  <link rel="stylesheet" href="/css/styles.css">
-
-  <style>
-    /* ============== 追加页面专用样式 ============== */
-    body {
-      font-family: 'Lora', serif;
-      /* 神秘背景图，可换成你自己的 /img/bg.png */
-      background: url('/img/bg.png') no-repeat center center fixed;
-      background-size: cover;
-      color: #f8e7c1;
-      min-height: 100vh;
-    }
-    /* 覆盖 Bootstrap 默认 navbar */
-    nav.custom-nav {
-      background-color: rgba(253,242,205,0.9);
-      padding: 1em 2em;
-    }
-    nav.custom-nav a {
-      color: #2c2c2c;
-      font-weight: 700;
-      text-decoration: none;
-      margin-right: 2rem;
-      transition: color .2s;
-    }
-    nav.custom-nav a:hover { color:#f9d451; }
-
-    /* 卡片区样式 */
-    #drop-container {
-      display: flex;
-      gap: 2rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin: 2rem 0;
-    }
-    .zone-container {
-      text-align: center;
-      max-width: 12rem;
-    }
-    .drop-zone {
-      width: 100%;
-      height: 200px;
-      border: 2px dashed #f9d451;
-      border-radius: 8px;
-      margin-bottom: .5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .drop-zone.hover { background:rgba(249,212,81,.15); }
-    .drop-zone img { width: 100%; height: 100%; object-fit: cover; }
-    .card-info { font-size: .9rem; line-height: 1.4; }
-
-    /* 源卡牌区 */
-    #source-container img {
-      width: 120px; height: 200px;
-      cursor: grab;
-    }
-
-    /* 问题下拉居中 */
-    .question-container { margin-top:1.5rem; }
-
-    /* 调整按钮容器 */
-    .button-container { margin:1.5rem 0; text-align:center; }
-  </style>
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body>
-  <!-- ======== 自定义导航 ======== -->
   <nav class="custom-nav">
     <a href="/">Tarot Tutor</a>
     <a href="/about.html">About Three Spread</a>
@@ -88,32 +22,31 @@
     <a href="/quiz">Quiz</a>
   </nav>
 
-  <!-- ======== 功能区 ======== -->
-  <div class="container py-4">
-    <!-- 控制按钮 -->
-    <div class="button-container">
-      <button id="get-card-btn" class="btn btn-primary me-2">Card Source</button>
-      <button id="clear-btn" class="btn btn-danger">Clear</button>
-    </div>
+  <!-- Button controls -->
+  <div class="button-container">
+    <button id="get-card-btn" class="btn btn-primary"></button>
+    <button id="clear-btn" class="btn btn-danger"></button>
+  </div>
 
-    <!-- 可拖拽牌源 -->
-    <div id="source-container" class="text-center mb-4"></div>
-
-    <!-- 问题选择 -->
+  <div class="container">
+    <!-- Question dropdown centered above card areas -->
     <div class="question-container">
       <select id="question-select" class="form-select w-75 mx-auto">
         <option value="q1">
-          What's holding me back from finding the right partner, and how can I move forward?
+          What’s holding me back from finding the right partner, and how can I move forward?
         </option>
         <option value="q2">
           Is now a good time to change jobs or should I stay and wait for a promotion?
         </option>
-        <option value="q1">What's holding me back from finding the right partner, and how can I move forward?</option>
-        <option value="q2">Is now a good time to change jobs or should I stay and wait for a promotion?</option>
+        <option value="q3">
+          What emotional baggage should I release, and how can I begin healing?
+        </option>
       </select>
     </div>
 
-    <!-- 三张卡放置区 -->
+    <!-- Container for draggable card -->
+    <div id="source-container" class="text-center mb-4"></div>
+
     <div id="drop-container">
       <div class="zone-container" data-zone="1">
         <h2>PAST</h2>
@@ -132,47 +65,44 @@
       </div>
     </div>
 
-
-    <!-- Navigation -->
-    <div class="d-flex justify-content-between my-4">
-      <a href="/learn/1" class="btn btn-outline-secondary">Back</a>
-      <a href="/quiz" class="btn btn-success">Next: Take the Quiz</a>
-    <!-- 导航 & Reveal -->
-    <div class="d-flex justify-content-between my-4">
-      <a href="/about.html" class="btn btn-outline-secondary">Back</a>
-      <button id="reveal-btn" class="btn btn-primary">Submit and Reveal Answers</button>
-      <a href="/learn_advanced.html" class="btn btn-success">Next: Advanced Concepts</a>
-
-    <!-- Navigation and Reveal Button -->
-    <div class="d-flex justify-content-between my-4">
-      <a href="/learn/1" class="btn btn-outline-secondary">Back</a>
-      <button id="reveal-btn" class="btn btn-primary">Submit and Reveal Answers</button>
-      <a href="/learn/3" class="btn btn-success">Next: Advanced Concepts</a>
-
+    <div class="footer-nav">
+      <a href="/select_track.html">Back</a>
+      <a id="next-adv" href="/learn_advanced.html">Next: Advanced Topics</a>
     </div>
   </div>
 
-  <!-- ======== Scripts ======== -->
+  <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    const BACK_IMAGE     = '/img/card-back.jpg';
-    const getCardBtn     = document.getElementById('get-card-btn');
-    const sourceContainer= document.getElementById('source-container');
-    const dropZones      = document.querySelectorAll('.drop-zone');
-    const clearBtn       = document.getElementById('clear-btn');
-    let   currentCard    = null;
+    const BACK_IMAGE = '/img/card-back.jpg';
+    const getCardBtn = document.getElementById('get-card-btn');
+    const sourceContainer = document.getElementById('source-container');
+    const dropZones = document.querySelectorAll('.drop-zone');
+    const clearBtn = document.getElementById('clear-btn');
+    const questionSelect = document.getElementById('question-select');
 
-    /* ----------- 获取随机牌 ----------- */
+    const params = new URLSearchParams(window.location.search);
+    const defaultQ = params.get('question');
+    if (defaultQ) {
+      questionSelect.value = defaultQ;
+    }
+
+    let currentCard = null;
+
+    document.querySelectorAll('.card-info').forEach(div => {
+      div.innerHTML = '<span class="emph-caption">Drag your card.</span>';
+    });
+
     getCardBtn.addEventListener('click', async () => {
       if (currentCard) sourceContainer.removeChild(currentCard);
       try {
-        const res  = await fetch('/api/getRandomCard');
+        const res = await fetch('/api/getRandomCard');
         const card = await res.json();
-        const img  = document.createElement('img');
-        img.src      = BACK_IMAGE;
-        img.className= 'card-back';
-        img.draggable= true;
+        const img = document.createElement('img');
+        img.src = BACK_IMAGE;
+        img.className = 'card-back';
+        img.draggable = true;
         img.dataset.card = JSON.stringify(card);
         img.addEventListener('dragstart', e =>
           e.dataTransfer.setData('application/json', e.target.dataset.card)
@@ -185,16 +115,18 @@
       }
     });
 
-    /* ----------- 拖拽逻辑 ----------- */
     dropZones.forEach(zone => {
-      zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('hover'); });
+      zone.addEventListener('dragover', e => {
+        e.preventDefault();
+        zone.classList.add('hover');
+      });
       zone.addEventListener('dragleave', () => zone.classList.remove('hover'));
       zone.addEventListener('drop', e => {
-        e.preventDefault(); zone.classList.remove('hover');
+        e.preventDefault();
+        zone.classList.remove('hover');
         const data = e.dataTransfer.getData('application/json');
         if (!data) return;
         const card = JSON.parse(data);
-
         zone.innerHTML = '';
         const img = document.createElement('img');
         img.src = BACK_IMAGE;
@@ -203,87 +135,64 @@
         zone.appendChild(img);
 
         const container = zone.closest('.zone-container');
-        const infoDiv   = container.querySelector('.card-info');
-        infoDiv.innerHTML = '';
+        const infoDiv = container.querySelector('.card-info');
+        infoDiv.innerHTML = '<span class="emph-caption">Click to reveal.</span>';
 
-        // 点击翻牌
         img.addEventListener('click', () => {
+          // show front image in zone
           zone.innerHTML = '';
           const frontImg = document.createElement('img');
           frontImg.src = card.image;
           frontImg.className = 'card-front';
           zone.appendChild(frontImg);
+          // display text outside in three lines
 
+          let advice;
+          const selected = questionSelect.value;
+          if (selected === 'q1') {
+            advice = card.relationshipAdvice;
+          } else if (selected === 'q2') {
+            advice = card.careerAdvice;
+          } else if (selected === 'q3') {
+            advice = card.healingAdvice;
+          }
           infoDiv.innerHTML =
-            `<h3>${card.name}</h3>
-             <p>${card.description}</p>
-             <p class="love-meaning">${card.loveMeaning}</p>`;
+            `<h3>${card.name}</h3>` +
+            `<p class="emph-line">${card.description}</p>` +
+            `<p>${advice}</p>`;
         });
 
-        // 移除旧牌
-        if (currentCard) { sourceContainer.removeChild(currentCard); currentCard = null; }
+        if (currentCard) {
+          sourceContainer.removeChild(currentCard);
+          currentCard = null;
+        }
       });
     });
 
-    /* ----------- 清空 ----------- */
     clearBtn.addEventListener('click', () => {
       dropZones.forEach(zone => (zone.innerHTML = ''));
-      document.querySelectorAll('.card-info').forEach(div => (div.innerHTML = ''));
-      if (currentCard) { sourceContainer.removeChild(currentCard); currentCard = null; }
+      document
+        .querySelectorAll('.card-info')
+        .forEach(div => (div.innerHTML = ''));
+      if (currentCard) {
+        sourceContainer.removeChild(currentCard);
+        currentCard = null;
+      }
     });
 
-    /* ----------- Reveal ----------- */
-    document.getElementById('reveal-btn').onclick = function() {
-      const fixedAnswers = {
-        1: { title:'PAST',    answer:'Your past experiences have shaped your current situation. Reflect on what you have learned and how it influences your present.' },
-        2: { title:'PRESENT', answer:'Currently, you are facing important choices. Stay mindful and trust your intuition to guide you through challenges.' },
-        3: { title:'FUTURE',  answer:'The future holds new opportunities. Stay open to change and be ready to embrace growth and transformation.' }
-      };
-      document.querySelectorAll('.zone-container').forEach(container => {
-        const zone    = container.querySelector('.drop-zone');
-        const infoDiv = container.querySelector('.card-info');
-        const zoneNum = container.getAttribute('data-zone');
-
-        // 翻正面
-    // Reveal fixed answers for each position
-    document.getElementById('reveal-btn').onclick = function() {
-      const fixedAnswers = {
-        1: {
-          title: 'PAST',
-          answer: 'Your past experiences have shaped your current situation. Reflect on what you have learned and how it influences your present.'
-        },
-        2: {
-          title: 'PRESENT',
-          answer: 'Currently, you are facing important choices. Stay mindful and trust your intuition to guide you through challenges.'
-        },
-        3: {
-          title: 'FUTURE',
-          answer: 'The future holds new opportunities. Stay open to change and be ready to embrace growth and transformation.'
-        }
-      };
-      document.querySelectorAll('.zone-container').forEach(container => {
-        const zone = container.querySelector('.drop-zone');
-        const infoDiv = container.querySelector('.card-info');
-        const zoneNum = container.getAttribute('data-zone');
-        // Reveal the card front if a card is present
-
-        const img = zone.querySelector('img.card-back');
-        if (img && img.dataset.card) {
-          const card = JSON.parse(img.dataset.card);
-          zone.innerHTML = '';
-          const frontImg = document.createElement('img');
-          frontImg.src = card.image;
-          frontImg.className = 'card-front';
-          zone.appendChild(frontImg);
-        }
-
-        // 固定解释
-        // Show the fixed answer
-        if (fixedAnswers[zoneNum]) {
-          infoDiv.innerHTML = `<h3>${fixedAnswers[zoneNum].title}</h3><p>${fixedAnswers[zoneNum].answer}</p>`;
-        }
-      });
-    };
+    const nextAdv = document.getElementById('next-adv');
+    nextAdv.addEventListener('click', e => {
+      e.preventDefault();  // stop immediate navigation
+      // ask the user
+      const ok = window.confirm(
+        'Have you tried multiple times to know enough tarot cards? \n\n Click “OK” to proceed or “Cancel” to stay here and engage more.'
+      );
+      if (ok) {
+        window.location.href = nextAdv.href;
+      } else {
+        clearBtn.click();          // re-use your existing clear logic
+      }
+    });
   </script>
 </body>
 </html>

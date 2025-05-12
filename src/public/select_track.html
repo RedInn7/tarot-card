@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn with Real Story</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="/css/styles.css" />
+  <style>
+    .container .description {
+      text-align: left;
+      margin: 2rem auto;
+      padding: 2rem 3.5rem;
+    }
+    .container .track-card {
+      width: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(190, 190, 190, 0.5);
+      padding: 1rem;
+      border-radius: 12px;
+    }
+    .container .track-card:hover {
+      transform: scale(1.05);
+    }
+	</style>
+
+</head>
+<body>
+  <nav class="custom-nav">
+    <a href="/">Tarot Tutor</a>
+    <a href="/about.html">About Three Spread</a>
+    <a href="/learn_story.html">Learning</a>
+    <a href="/quiz">Quiz</a>
+  </nav>
+
+	<section class="container">
+		<div class="title">PREDICT VIA THE THREE SPREAD</div>
+		<h2 style="font-size: 4em; margin-top: 70px;">You’re interested in?</h2>
+		<div class="description">
+			<p>🎬 Starting from now you will begin a wonderful journey of learning tarot cards' meanings through glimpsing your own future – gaining advice and insights in real stories.</p>
+			<p>💡 Think about what you wish your tarot cards can tell you about and choose one track that we’re diving deeper into.</p>
+		</div>
+
+		<div class="cards">
+      <div class="track-card" data-question="q1">
+          <h3>LOVE AND RELATION</h3>
+          <p>What’s holding me back from finding the right partner, and how can I move forward?</p>
+      </div>
+      <div class="track-card" data-question="q2">
+          <h3>CAREER AND FINANCE</h3>
+          <p>Is now a good time to change jobs or should I stay and wait for a promotion?</p>
+      </div>
+      <div class="track-card" data-question="q3">
+          <h3>HEALING AND GROWTH</h3>
+          <p>What emotional baggage should I release, and how can I begin healing?</p>
+      </div>
+    </div>
+
+    <div class="footer-nav">
+      <a href="/learn_intro.html">Back</a>
+      <a href="/learn_story.html">Begin</a>
+    </div>
+	</section>
+  <script>
+    document.querySelectorAll('.track-card').forEach(card => {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', () => {
+        const q = card.dataset.question;
+        // Navigate and include the chosen question as a URL parameter
+        window.location.href = `/learn_story.html?question=${q}`;
+      });
+    });
+  </script>
+</body>
+</html>
