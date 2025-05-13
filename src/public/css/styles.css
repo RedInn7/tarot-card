@@ -113,6 +113,11 @@ font-size: 1.3em;
 color: #f9d451;
 font-style: italic;
 }
+.emph-line-plain{
+font-size: 1.3em;
+color: #f8e7c1;
+font-style: italic;
+}
 
 /* Learn Story Styles */
 .button-container {

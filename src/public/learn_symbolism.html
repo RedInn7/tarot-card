@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tarot Tutor – Card Symbolism</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Main Styles -->
+  <link href="/css/styles.css" rel="stylesheet">
+  <!-- Page Overrides -->
+  <style>
+    /* 统一字体 */
+    body { font-family: 'Lora', serif; }
+    /* 半透明卡片背景 */
+    .card { background: rgba(190,190,190,0.5) !important; border:none; border-radius:15px; }
+    /* 列表项透明，移除边框 */
+    .list-group-item { background:transparent !important; border:none !important; color:#e2d2ad; }
+    /* 卡片中文字颜色 */
+    .card-body, .card-body h4, .card-body p, .card-body ul li { color:#e2d2ad !important; }
+    /* 小标题浅黄色 */
+    h3 { color:#f9d451 !important; }
+    /* 页面大标题 */
+    .title { color:#f9d451; text-align:center; margin-bottom:2rem; }
+  </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+  <nav class="custom-nav">
+    <a href="/">Tarot Tutor</a>
+    <a href="/learn_intro.html">Learning</a>
+    <a href="/quiz">Quiz</a>
+    <a href="/learn_advanced.html">Advance</a>
+  </nav>
+
+  <main class="container my-5">
+    <h2 class="title">UNDERSTAND TAROT SYMBOLISM</h2>
+
+    <!-- Common Symbols -->
+    <section class="mb-5">
+      <h3 class="mb-3">Common Symbols in Tarot</h3>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h4>Celestial Bodies</h4>
+              <ul class="list-unstyled">
+                <li>🌞 Sun: Vitality, success, joy</li>
+                <li>🌙 Moon: Intuition, dreams, subconscious</li>
+                <li>⭐ Stars: Hope, inspiration, guidance</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h4>Natural Elements</h4>
+              <ul class="list-unstyled">
+                <li>🌊 Water: Emotions, intuition, flow</li>
+                <li>🔥 Fire: Passion, transformation, energy</li>
+                <li>🌳 Trees: Growth, stability, wisdom</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h4>Animals</h4>
+              <ul class="list-unstyled">
+                <li>🦁 Lion: Strength, courage, leadership</li>
+                <li>🦅 Eagle: Vision, freedom, perspective</li>
+                <li>🦊 Fox: Cunning, adaptability, wisdom</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Color Symbolism -->
+    <section class="mb-5">
+      <h3 class="mb-3">Color Meanings</h3>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h4 class="card-title">Primary Colors</h4>
+              <ul class="list-group">
+                <li class="list-group-item"><span class="badge bg-danger">Red</span> Passion, energy, action</li>
+                <li class="list-group-item"><span class="badge bg-primary">Blue</span> Calm, wisdom, communication</li>
+                <li class="list-group-item"><span class="badge bg-warning">Yellow</span> Intellect, optimism, clarity</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h4 class="card-title">Secondary Colors</h4>
+              <ul class="list-group">
+                <li class="list-group-item"><span class="badge bg-success">Green</span> Growth, abundance, healing</li>
+                <li class="list-group-item"><span class="badge" style="background-color:#6f42c1;">Purple</span> Spirituality, mystery, wisdom</li>
+                <li class="list-group-item"><span class="badge bg-secondary">Gray</span> Neutrality, balance, wisdom</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Symbolic Card Gallery -->
+    <section class="mb-5">
+      <h3 class="mb-3">Symbolic Card Gallery</h3>
+      <div class="mb-4">
+        <input type="text" id="card-search" class="form-control" placeholder="Search by symbol or color…">
+      </div>
+      <div id="card-gallery" class="row"></div>
+    </section>
+
+    <!-- Footer Navigation -->
+    <div class="footer-nav">
+      <a href="/learn_intro.html">← Back</a>
+      <a href="/select_track.html">Next: Learn Story →</a>
+    </div>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+      const input=document.getElementById('card-search');
+      const gallery=document.getElementById('card-gallery');
+      let allCards=[];
+      fetch('/api/getAllCards')
+        .then(r=>r.json())
+        .then(d=>{
+          allCards=d.map(c=>({
+            ...c,
+            symbols:c.symbols.map(s=>s.toLowerCase()),
+            colors:c.colors.map(cu=>cu.toLowerCase())
+          }));
+          updateGallery();
+        });
+      function updateGallery(){
+        const q=input.value.trim().toLowerCase();
+        const matches=allCards
+          .filter(card=>!q||card.symbols.some(s=>s.includes(q))||card.colors.some(c=>c.includes(q)))
+          .slice(0,3);
+        gallery.innerHTML='';
+        matches.forEach(card=>{
+          const col=document.createElement('div');
+          col.className='col-md-4 mb-4';
+          col.innerHTML=`<div class="card h-100"><img src="${card.image}" class="card-img-top" alt="${card.name}"><div class="card-body"><h5 class="card-title text-light">${card.name}</h5><ul class="list-unstyled text-light"><li><em>${card.description}</em></li><li><strong>Symbols:</strong> ${card.symbols.join(', ')}</li><li><strong>Colors:</strong> ${card.colors.join(', ')}</li></ul></div></div>`;
+          gallery.append(col);
+        });
+      }
+      input.addEventListener('keydown',e=>{if(e.key==='Enter')updateGallery();});
+    });
+  </script>
+</body>
+</html>

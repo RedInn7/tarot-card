@@ -50,8 +50,11 @@ app.get('/quiz_result', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'quiz_result.html'));
 });
 
+// app.get('/about', (req, res) =>
+//   res.sendFile(path.join(__dirname, 'public', 'about.html')));
+
 app.get('/about', (req, res) =>
-  res.sendFile(path.join(__dirname, 'public', 'about.html')));
+  res.sendFile(path.join(__dirname, 'public', 'learn_advanced.html')));
 
 // API implementations
 app.get('/api/getRandomCard', (req, res) => {

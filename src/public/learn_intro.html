@@ -1,243 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Tarot Tutor – Card Symbolism</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Three‑Card Spread | Tarot Tutor</title>
+
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Main Styles -->
-  <link href="/css/styles.css" rel="stylesheet">
+  <!-- 全站主样式 -->
+  <link rel="stylesheet" href="/css/styles.css">
+
   <style>
-    .container .card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: rgba(190, 190, 190, 0.5);
-      border-radius: 15px;
-    }
+    /* 页内少量排版微调，不影响全局主题 */
+    .container { max-width: 1000px; margin: 2rem auto; text-align: center; padding: 0 1rem; }
+    .title     { font-size: 2.5rem; color: #f9d451; margin-bottom: 1.5rem; }
+    .cards     { display: flex; justify-content: center; gap: 2rem; margin-bottom: .5rem; }
+    .card      { display: flex; flex-direction: column; align-items: center; }
+    .card img  { width: 180px; border: 2px solid #fff; border-radius: 4px; box-shadow: 0 0 10px rgba(255,255,255,.3); }
+    .card-label{ margin-top: .5rem; color: #f9d451; font-size: 1.2rem; }
+    .sections  { display: flex; gap: 2rem; margin-top: 2rem; text-align: left; }
+    .sections>div{ flex: 1; }
+    .sections h2,.sections h3{ color:#f9d451; margin-bottom:.5rem; }
+    .sections p,.sections li{ color:#e2d2ad; line-height:1.5; margin-bottom:.5rem; }
+    ul{ padding-left:1.2rem; }
   </style>
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body>
+
+  <!-- 统一导航栏 -->
   <nav class="custom-nav">
     <a href="/">Tarot Tutor</a>
-    <a href="/about.html">About Three Spread</a>
     <a href="/learn_intro.html">Learning</a>
     <a href="/quiz">Quiz</a>
+    <a href="/learn_advanced.html">Advance</a>
   </nav>
 
-  <main class="container my-5">
-    <h2 class="title">UNDERSTAND TAROT SYMBOLISM</h2>
-    
-    <!-- Common Symbols -->
-    <section class="mb-5">
-      <h3 class="mb-3">Common Symbols in Tarot</h3>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card mb-3">
-            <div class="card-body">
-              <h4>Celestial Bodies</h4>
-              <ul class="list-unstyled">
-                <li>🌞 Sun: Vitality, success, joy</li>
-                <li>🌙 Moon: Intuition, dreams, subconscious</li>
-                <li>⭐ Stars: Hope, inspiration, guidance</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card mb-3">
-            <div class="card-body">
-              <h4>Natural Elements</h4>
-              <ul class="list-unstyled">
-                <li>🌊 Water: Emotions, intuition, flow</li>
-                <li>🔥 Fire: Passion, transformation, energy</li>
-                <li>🌳 Trees: Growth, stability, wisdom</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card mb-3">
-            <div class="card-body">
-              <h4>Animals</h4>
-              <ul class="list-unstyled">
-                <li>🦁 Lion: Strength, courage, leadership</li>
-                <li>🦅 Eagle: Vision, freedom, perspective</li>
-                <li>🦊 Fox: Cunning, adaptability, wisdom</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+  <div class="container">
+    <div class="title">PREDICT VIA THE THREE‑CARD SPREAD</div>
 
-    <!-- Color Symbolism -->
-    <section class="mb-5">
-      <h3 class="mb-3">Color Meanings</h3>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="card mb-3">
-            <div class="card-body">
-              <h4 class="card-title">Primary Colors</h4>
-              <ul class="list-group">
-                <li class="list-group-item">
-                  <span class="badge bg-danger">Red</span>
-                  Passion, energy, action
-                </li>
-                <li class="list-group-item">
-                  <span class="badge bg-primary">Blue</span>
-                  Calm, wisdom, communication
-                </li>
-                <li class="list-group-item">
-                  <span class="badge bg-warning">Yellow</span>
-                  Intellect, optimism, clarity
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card mb-3">
-            <div class="card-body">
-              <h4 class="card-title">Secondary Colors</h4>
-              <ul class="list-group">
-                <li class="list-group-item">
-                  <span class="badge bg-success">Green</span>
-                  Growth, abundance, healing
-                </li>
-                <li class="list-group-item">
-                  <span class="badge" style="background-color: #6f42c1;">Purple</span>
-                  Spirituality, mystery, wisdom
-                </li>
-                <li class="list-group-item">
-                  <span class="badge bg-secondary">Gray</span>
-                  Neutrality, balance, wisdom
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+    <!-- 三张示例牌 -->
+    <div class="cards">
+      <div class="card">
+        <img src="https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/b7c1f87a-8d62-458c-bc1c-7a1dab732d0c/Picsart_22-05-17_01-01-55-228.jpg?format=1000w" alt="Past Card">
+        <div class="card-label">Past</div>
       </div>
-    </section>
-
-    <!-- Interpretation Tips -->
-    <section class="mb-5">
-      <h3 class="mb-3">Interpretation Guidelines</h3>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="card mb-3">
-            <div class="card-body">
-              <h4 class="card-title">Context Matters</h4>
-              <ul class="list-group">
-                <li class="list-group-item">Consider the question being asked</li>
-                <li class="list-group-item">Look at surrounding cards</li>
-                <li class="list-group-item">Note the card's position in the spread</li>
-                <li class="list-group-item">Consider the querent's situation</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card mb-3">
-            <div class="card-body">
-              <h4 class="card-title">Symbolic Connections</h4>
-              <ul class="list-group">
-                <li class="list-group-item">Look for repeated symbols</li>
-                <li class="list-group-item">Note color patterns</li>
-                <li class="list-group-item">Consider elemental influences</li>
-                <li class="list-group-item">Watch for numerical patterns</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+      <div class="card">
+        <img src="https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/e1a56a67-fe7c-4a81-bd01-f5689b3deed4/Picsart_22-05-17_01-00-55-244.jpg?format=1000w" alt="Present Card">
+        <div class="card-label">Present</div>
       </div>
-    </section>
-
-    <!-- Symbolic Card Gallery -->
-    <section class="mb-5">
-      <h3 class="mb-3">Symbolic Card Gallery</h3>
-      <!-- Search Bar -->
-      <div class="mb-4">
-        <input
-          type="text"
-          id="card-search"
-          class="form-control"
-          placeholder="Search by symbol or color…">
+      <div class="card">
+        <img src="https://images.squarespace-cdn.com/content/v1/6282048f3ddae806d695b4b8/f605187c-a164-41a8-a507-5be207100dfa/Picsart_22-05-17_00-59-49-885.jpg?format=1000w" alt="Future Card">
+        <div class="card-label">Future</div>
       </div>
-
-      <div id="card-gallery" class="row">
-      </div>
-    </section>
-
-    <!-- Navigation -->
-    <div class="footer-nav">
-      <a href="/index.html">Back</a>
-      <a href="/select_track.html">Next: Learn Story</a>
     </div>
-  </main>
 
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const input    = document.getElementById('card-search');
-      const gallery  = document.getElementById('card-gallery');
-      let allCards   = [];
-    
-      // 1. Fetch the full deck from your API
-      fetch('/api/getAllCards')
-        .then(res  => res.json())
-        .then(data => {
-          allCards = data.map(card => ({
-            ...card,
-            symbols: card.symbols.map(s => s.toLowerCase()),
-            colors:  card.colors.map(c => c.toLowerCase())
-          }));
-          updateGallery();
-        })
-        .catch(err => console.error('Failed to load cards from API:', err));
-    
-      // 2. Render up to 3 matching cards
-      function updateGallery() {
-        const q = input.value.trim().toLowerCase();
-        const matches = allCards
-          .filter(card =>
-            !q ||
-            card.symbols.some(s => s.includes(q)) ||
-            card.colors.some(c => c.includes(q))
-          )
-          .slice(0, 3);
-        
-        gallery.innerHTML = '';
-        matches.forEach(card => {
-          const col = document.createElement('div');
-          col.className = 'col-md-4 mb-4';
-          col.innerHTML = `
-            <div class="card h-100">
-              <img src="${card.image}" class="card-img-top" alt="${card.name}">
-              <div class="card-body">
-                <h5 class="card-title">${card.name}</h5>
-                <ul class="list-unstyled">
-                  <li><span style="font-style: italic;">${card.description}</span></li>
-                  <li><strong>Symbols:</strong> ${card.symbols.join(', ')}</li>
-                  <li><strong>Colors:</strong> ${card.colors.join(', ')}</li>
-                </ul>
-              </div>
-            </div>`;
-          gallery.append(col);
-        });
-      }
-    
-      // 3. Wire up search input
-      input.addEventListener('keydown', e => {
-        if (e.key === 'Enter') {
-          updateGallery();
-        }
-      });
-    });
-    </script>    
+    <!-- 文字讲解 -->
+    <div class="sections">
+      <div>
+        <h2>How It Works</h2>
+        <p>Three tarot cards are drawn and placed left‑to‑right. Each position frames an aspect of your question.</p>
+        <p>Past → Present → Future provides a clear narrative arc for interpretation.</p>
+        <p>Ready to explore? Let’s begin!</p>
+      </div>
+
+      <div>
+        <h3>Popular Interpretations</h3>
+        <ul>
+          <li><strong>Card ONE (Past)</strong>: Key events or underlying influences.</li>
+          <li><strong>Card TWO (Present)</strong>: Current challenge or focal point.</li>
+          <li><strong>Card THREE (Future)</strong>: Advice and potential outcome.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 页面跳转 -->
+    <div class="footer-nav">
+      <a href="/">← Back Home</a>
+      <a href="/learn_symbolism.html">Next: Symbolism →</a>
+    </div>
+  </div>
 </body>
-</html> 
+</html>

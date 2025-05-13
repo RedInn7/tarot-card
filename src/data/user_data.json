@@ -178,5 +178,135 @@
     "action": "start_learning",
     "timestamp": "2025-05-12T09:45:03.179Z",
     "userId": "0a034d86-cdd4-41d3-8344-b1502c221c21"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T18:25:25.918Z",
+    "userId": "b2febc8a-c73f-4fd6-bb7b-e2194ce7562c"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T18:32:33.082Z",
+    "userId": "b2febc8a-c73f-4fd6-bb7b-e2194ce7562c"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T18:37:32.609Z",
+    "userId": "b2febc8a-c73f-4fd6-bb7b-e2194ce7562c"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T18:45:51.882Z",
+    "userId": "b2febc8a-c73f-4fd6-bb7b-e2194ce7562c"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T20:17:07.953Z",
+    "userId": "b2febc8a-c73f-4fd6-bb7b-e2194ce7562c"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T20:17:42.998Z",
+    "userId": "b2febc8a-c73f-4fd6-bb7b-e2194ce7562c"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T20:41:41.523Z",
+    "userId": "b2febc8a-c73f-4fd6-bb7b-e2194ce7562c"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T20:43:17.282Z",
+    "userId": "b2febc8a-c73f-4fd6-bb7b-e2194ce7562c"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T21:43:14.523Z",
+    "userId": "b2febc8a-c73f-4fd6-bb7b-e2194ce7562c"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T21:43:31.607Z",
+    "userId": "b2febc8a-c73f-4fd6-bb7b-e2194ce7562c"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T21:43:41.007Z",
+    "userId": "b2febc8a-c73f-4fd6-bb7b-e2194ce7562c"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T21:52:50.197Z",
+    "userId": "b2febc8a-c73f-4fd6-bb7b-e2194ce7562c"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T21:57:21.776Z",
+    "userId": "b2febc8a-c73f-4fd6-bb7b-e2194ce7562c"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T21:57:27.426Z",
+    "userId": "b2febc8a-c73f-4fd6-bb7b-e2194ce7562c"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T22:01:26.610Z",
+    "userId": "0a034d86-cdd4-41d3-8344-b1502c221c21"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T22:02:15.845Z",
+    "userId": "0a034d86-cdd4-41d3-8344-b1502c221c21"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T22:11:29.821Z",
+    "userId": "0a034d86-cdd4-41d3-8344-b1502c221c21"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T22:14:05.225Z",
+    "userId": "0a034d86-cdd4-41d3-8344-b1502c221c21"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T22:14:20.302Z",
+    "userId": "0a034d86-cdd4-41d3-8344-b1502c221c21"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T22:14:59.478Z",
+    "userId": "0a034d86-cdd4-41d3-8344-b1502c221c21"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T22:20:23.587Z",
+    "userId": "0a034d86-cdd4-41d3-8344-b1502c221c21"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T22:44:26.497Z",
+    "userId": "0a034d86-cdd4-41d3-8344-b1502c221c21"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T22:59:42.933Z",
+    "userId": "0a034d86-cdd4-41d3-8344-b1502c221c21"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T23:00:44.431Z",
+    "userId": "0a034d86-cdd4-41d3-8344-b1502c221c21"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-12T23:05:13.776Z",
+    "userId": "0a034d86-cdd4-41d3-8344-b1502c221c21"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-13T01:27:00.652Z",
+    "userId": "0a034d86-cdd4-41d3-8344-b1502c221c21"
   }
 ]
