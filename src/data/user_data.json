@@ -308,5 +308,10 @@
     "action": "start_learning",
     "timestamp": "2025-05-13T01:27:00.652Z",
     "userId": "0a034d86-cdd4-41d3-8344-b1502c221c21"
+  },
+  {
+    "action": "start_learning",
+    "timestamp": "2025-05-13T01:51:38.675Z",
+    "userId": "0a034d86-cdd4-41d3-8344-b1502c221c21"
   }
 ]
